@@ -1,0 +1,6 @@
+﻿services:
+  handmade:
+    image: handmade
+    build:
+      context: .
+      dockerfile: HandMade/Dockerfile
