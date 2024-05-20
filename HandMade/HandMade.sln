@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandMade", "HandMade\HandMade.csproj", "{6FF21731-FCD7-4B60-B4E7-F54B019224F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{6FF21731-FCD7-4B60-B4E7-F54B019224F8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5569C31B-9D2F-4754-B627-EDBDFF76A50D}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinessLogic", "BussinessLogic\BussinessLogic.csproj", "{7105CB92-4B25-4EC8-AB2D-9F2A2B48B314}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{0A611673-5CF6-4A06-96BA-74418C744634}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,5 +21,13 @@ Global
 		{6FF21731-FCD7-4B60-B4E7-F54B019224F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FF21731-FCD7-4B60-B4E7-F54B019224F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FF21731-FCD7-4B60-B4E7-F54B019224F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7105CB92-4B25-4EC8-AB2D-9F2A2B48B314}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7105CB92-4B25-4EC8-AB2D-9F2A2B48B314}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7105CB92-4B25-4EC8-AB2D-9F2A2B48B314}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7105CB92-4B25-4EC8-AB2D-9F2A2B48B314}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A611673-5CF6-4A06-96BA-74418C744634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A611673-5CF6-4A06-96BA-74418C744634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A611673-5CF6-4A06-96BA-74418C744634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A611673-5CF6-4A06-96BA-74418C744634}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
