@@ -9,10 +9,7 @@
 
     <ItemGroup>
       <Folder Include="Dtos\" />
-      <Folder Include="ErrorHandle\" />
-      <Folder Include="Interface\IRepositories\" />
       <Folder Include="Interface\IServices\" />
-      <Folder Include="Repositories\" />
       <Folder Include="Service\" />
       <Folder Include="Utils\" />
     </ItemGroup>
