@@ -3,6 +3,8 @@ using ClassLibrary1.Interface.IRepositories;
 using ClassLibrary1.Repositories;
 using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Models;
 
 namespace HandMade;
 
@@ -28,6 +30,15 @@ public static class DependencyInjection
             .WithScopedLifetime());
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddSwaggerGen(ops =>
+        {
+            ops.MapType<DateTime>(()=> new OpenApiSchema()
+            {
+                Type = "string",
+                Format = "date",
+                Example = new OpenApiString(DateTime.Now.ToString("dd-MM-yyyy"))
+            });
+        });
         return services;
     }
 }

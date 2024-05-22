@@ -23,5 +23,6 @@ public class AppDbContext : DbContext
             new Category() { Id = 3, Name = "Giấy Sáp Ong" },
             new Category() { Id = 4, Name = "Sách Decor" }
         );
+        
     }
 }
