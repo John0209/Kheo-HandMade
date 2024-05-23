@@ -9,7 +9,6 @@
 
     <ItemGroup>
       <Folder Include="Dtos\RequestDto\Customer\" />
-      <Folder Include="Dtos\ResponseDto\" />
     </ItemGroup>
 
     <ItemGroup>

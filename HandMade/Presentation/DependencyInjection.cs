@@ -36,7 +36,7 @@ public static class DependencyInjection
             {
                 Type = "string",
                 Format = "date",
-                Example = new OpenApiString(DateTime.Now.ToString("dd-MM-yyyy"))
+                Example = new OpenApiString(DateTime.Now.ToString("yyyy-MM-dd"))
             });
         });
         return services;

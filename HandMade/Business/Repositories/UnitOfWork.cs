@@ -8,13 +8,14 @@ namespace ClassLibrary1.Repositories;
 
 public class UnitOfWork:IUnitOfWork
 {
-    public UnitOfWork(ICustomerRepository customerRepository, ICategoryRepository categoryRepository, IProductRepository productRepository, IOrderRepository orderRepository, IOrderDetailRepository orderDetailRepository)
+    public UnitOfWork(ICustomerRepository customerRepository, ICategoryRepository categoryRepository, IProductRepository productRepository, IOrderRepository orderRepository, IOrderDetailRepository orderDetailRepository, AppDbContext context)
     {
         CustomerRepository = customerRepository;
         CategoryRepository = categoryRepository;
         ProductRepository = productRepository;
         OrderRepository = orderRepository;
         OrderDetailRepository = orderDetailRepository;
+        _context = context;
     }
 
     public void Dispose()
