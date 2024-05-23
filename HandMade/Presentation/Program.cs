@@ -20,7 +20,13 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
+    // app.UseSwaggerUI(c =>
+    // {
+    //     c.SwaggerEndpoint("/swagger/v1/swagger.json", "HandMade API");
+    //     c.RoutePrefix=string.Empty;
+    // });
     app.UseSwaggerUI();
+
 }
 
 app.UseHttpsRedirection();

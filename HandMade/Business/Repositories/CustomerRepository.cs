@@ -24,15 +24,15 @@ public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
         return DbSet.FirstOrDefault(x => x.Email == email && x.TokenCode == code);
     }
 
-    public async Task<Customer?> LoginAsync(LoginRequestDto dto, LoginType type)
+    public Task<Customer?>? LoginAsync(LoginRequestDto dto, LoginType type)
     {
         switch (type)
         {
             case LoginType.LoginByEmail:
-                return await DbSet.FirstOrDefaultAsync(x =>
+                return DbSet.FirstOrDefaultAsync(x =>
                     x.Email == dto.Email && x.PassWord == dto.Password && x.Status == UserStatus.Actived);
             case LoginType.LoginByPhone:
-                return await DbSet.FirstOrDefaultAsync(x =>
+                return DbSet.FirstOrDefaultAsync(x =>
                     x.PhoneNumber == dto.PhoneNumber && x.PassWord == dto.Password && x.Status == UserStatus.Actived);
             default:
                 return null;

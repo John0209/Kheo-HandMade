@@ -8,5 +8,5 @@ public interface ICustomerRepository:IBaseRepository<Customer>
 {
     bool CheckEmailExist(string email);
     Customer? VerifyEmailCode(string email, int code);
-    Task<Customer?> LoginAsync(LoginRequestDto dto, LoginType type);
+    Task<Customer?>? LoginAsync(LoginRequestDto dto, LoginType type);
 }
