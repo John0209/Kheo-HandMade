@@ -24,7 +24,7 @@ jobs:
       uses: appleboy/ssh-action@v0.1.10
       with:
         host: 45.118.134.212
-        username: root
-        password: ${{ Lambizsoft@2024 }}
+        username: 'root'
+        password: ${{ secrets.Host_Password }}
         port: 22
       
