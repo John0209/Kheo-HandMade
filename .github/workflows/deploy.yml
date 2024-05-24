@@ -20,11 +20,28 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: Deploy
-      uses: appleboy/ssh-action@v0.1.10
-      with:
-        host: 45.118.134.212
-        username: 'root'
-        password: ${{ secrets.HOST_PASSWORD }}
-        port: 22
-      
+      - name: Checkout code 
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2 
+        with:
+          dotnet-version: 7.0
+
+      - name: Restore dependencies
+        run: dotnet restore 
+
+      - name: Build
+        run: dotnet build
+
+      - name: Publish 
+        run: dotnet publish -c Release -o out
+
+      - name: Deploy
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+          port: 22
+        
