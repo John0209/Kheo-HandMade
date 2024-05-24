@@ -25,6 +25,6 @@ jobs:
       with:
         host: 45.118.134.212
         username: 'root'
-        password: ${{ secrets.Host_Password }}
+        password: ${{ secrets.HOST_PASSWORD }}
         port: 22
       
