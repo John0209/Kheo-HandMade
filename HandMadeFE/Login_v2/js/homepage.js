@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 })
 
 async function getProducts() {
-    const response = await fetch('https://1f0a-202-92-4-186.ngrok-free.app/api/v1/products?status=Stocking')
+    const response = await fetch('https://localhost:44326/api/v1/products?status=Stocking')
     return await response.json();
 }
 
