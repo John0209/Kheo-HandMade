@@ -115,10 +115,16 @@
     }
 
     // gắn event cho button login
-    document.getElementById('btnLogin').onclick = async () => {
+   
+    document.getElementById('btnLogin').addEventListener('click', async function(e) {
+
+        e.preventDefault();
+      
+        //await checkLogin();
+      
         window.location.href = '/HandMadeFE/pages/homepage.html';
-        //checkLogin();
-    }
+      
+      }, true);
 
 })(jQuery);
 
