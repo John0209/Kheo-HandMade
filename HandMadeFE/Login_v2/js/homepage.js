@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 async function getProducts() {
     const response = await fetch('https://localhost:44326/api/v1/products?status=Stocking')
-    return await response.text();
+    return await response.json();
 }
 
 
