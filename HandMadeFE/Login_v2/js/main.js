@@ -122,7 +122,7 @@
       
         //await checkLogin();
       
-        window.location.href = '/HandMadeFE/pages/homepage.html';
+        window.location.href = 'https://kheo-handmade.vercel.app/HandMadeFE/pages/homepage.html';
       
       }, true);
 
