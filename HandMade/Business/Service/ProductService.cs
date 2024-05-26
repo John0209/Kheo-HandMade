@@ -48,7 +48,7 @@ public class ProductService : IProductService
             throw new NotImplementException("Add new product failed");
     }
 
-    public async Task HideProduct(int id,ProductStatus status)
+    public async Task UpdateProductStatus(int id,ProductStatus status)
     {
         var product = await _unit.ProductRepository.GetByIdAsync(id) ??
                       throw new NotFoundException("Product not found");

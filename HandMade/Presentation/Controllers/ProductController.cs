@@ -5,7 +5,7 @@ using DataAccess.Enum;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HandMade.Controllers;
-
+[Produces("application/json")]
 [ApiController]
 [Route("api/v1/products")]
 public class ProductController : ControllerBase
@@ -51,9 +51,9 @@ public class ProductController : ControllerBase
     /// <param name="status"></param>
     /// <returns></returns>
     [HttpPatch("{id}")]
-    public async Task<IActionResult> HideProductAsync(int id, ProductStatus status)
+    public async Task<IActionResult> UpdateProductStatusAsync(int id, ProductStatus status)
     {
-        await _productService.HideProduct(id,status);
+        await _productService.UpdateProductStatus(id,status);
         return Ok(new
         {
             Message = "Hide product successful"

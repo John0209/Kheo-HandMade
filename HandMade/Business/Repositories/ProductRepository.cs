@@ -31,6 +31,6 @@ public class ProductRepository : BaseRepository<Product>, IProductRepository
     public override Task<Product?> GetByIdAsync(int id, bool disableTracking = false)
     {
         IQueryable<Product> query = DbSet.AsNoTracking();
-        return query.Include(x => x.Category).FirstOrDefaultAsync(x => x.Id == id && x.Status != ProductStatus.Hide);
+        return query.Include(x => x.Category).FirstOrDefaultAsync(x => x.Id == id);
     }
 }

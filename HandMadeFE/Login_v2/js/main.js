@@ -85,42 +85,42 @@
 
     });
 
+    async function checkLogin() {
+        try {
+            //Call API
+            const response = await fetch('https://1f0a-202-92-4-186.ngrok-free.app/api/v1/accounts/login?type=LoginByEmail', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    phoneNumber: '0397528860',
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('pass').value
+                })
+            });
+            alert(document.getElementById('email').value);
+            //Nhận result from api
+            const data = await response.json();
 
+            alert(data.JSON);
+            if (data.success) {
+                window.location.href = '/HandMadeFE/pages/homepage.html';
+            } else {
+                alert('Wrong information');
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
+    // gắn event cho button login
+    document.getElementById('btnLogin').onclick = async () => {
+        window.location.href = '/HandMadeFE/pages/homepage.html';
+        //checkLogin();
+    }
 
 })(jQuery);
 
-async function checkLogin() {
-    try {
-        //Call API
-        const response = await fetch('https://localhost:44326/api/v1/accounts/login?type=LoginByEmail', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                phoneNumber: '0397528860',
-                email: document.getElementsByName('email').value,
-                password: document.getElementsByName('pass').value
-            })
-        });
-        //Nhận result from api
-        const data = await response.json();
-        alert(data.JSON);
-        if (data.success) {
-            window.location.href = '/HandMadeFE/pages/homepage.html';
-        } else {
-            alert('Wrong information');
-        }
-    } catch (error) {
-        console.log(error)
-    }
-}
 
-// gắn event cho button login
-document.querySelector('button').onclick = () => {
-    const result= document.getElementsByName('pass').value;
-    console.log(result);
-   // checkLogin();
-}
 
