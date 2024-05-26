@@ -9,10 +9,18 @@ document.addEventListener('DOMContentLoaded', async function () {
     productsData.forEach(x=>{
         html += `
     <div class="product-items">
-        <img src="../images/candle.jpg"/ class="product-image">
+        <img src="../images/candle.jpg" class="product-image"/>
         <p>${x.categoryName}</p>
         <h2>${x.productName}</h2>
-        <p>${x.price}</p>
+        <div class="product-star">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        </div>
+        <h2 style="color: #F57C20;">${x.price}đ</h2>
+        <div class="product-bar"></div>
     </div>
     `
     })
