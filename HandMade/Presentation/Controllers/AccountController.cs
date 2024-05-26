@@ -2,6 +2,7 @@ using ClassLibrary1.Dtos.RequestDto.Account;
 using ClassLibrary1.Dtos.ResponseDto;
 using ClassLibrary1.Interface.IServices;
 using DataAccess.Enum;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HandMade.Controllers;
