@@ -122,7 +122,7 @@
       
         //await checkLogin();
       
-        window.location.href = 'pages/homepage.html';
+        window.location.href = '../Login_v2/pages/homepage.html';
       
       }, true);
 
