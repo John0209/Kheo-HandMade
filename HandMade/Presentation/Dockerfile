@@ -6,11 +6,18 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+COPY ["Business.csproj","src/"]
+COPY ["DataAccess.csproj","src/"]
 COPY ["Presentation.csproj", "src/"]
+RUN dotnet restore "src/DataAccess.csproj"
+RUN dotnet restore "src/Business.csproj"
 RUN dotnet restore "src/Presentation.csproj"
+
 COPY . .
 WORKDIR /src
 RUN dotnet build "Presentation.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "Business.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "DataAccess.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
