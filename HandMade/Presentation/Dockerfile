@@ -6,7 +6,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["HandMade/HandMade.csproj", "HandMade/"]
+COPY ["HandMade/HandMade.csproj", "src/"]
 RUN dotnet restore "HandMade/HandMade.csproj"
 COPY . .
 WORKDIR "/src/HandMade"
