@@ -8,6 +8,7 @@
         <RootNamespace>HandMade</RootNamespace>
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
         <DocumentationFile>D:\Kheo-HandMade\HandMade\Presentation\bin\Debug\net7.0\Presentation.xml</DocumentationFile>
+        <UserSecretsId>bf7efdb0-337e-436a-a64e-e377d74834e2</UserSecretsId>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -30,15 +31,10 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
         <PackageReference Include="Scrutor.AspNetCore" Version="3.3.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
         <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.6.2" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
     </ItemGroup>
 
     <ItemGroup>
