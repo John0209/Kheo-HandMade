@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 })
 
 async function getProducts() {
-    const response = await fetch('https://localhost:44326/api/v1/products?status=Stocking')
+    const response = await fetch('https://handmade.somee.com/api/v1/products?status=Stocking')
     return await response.json();
 }
 
