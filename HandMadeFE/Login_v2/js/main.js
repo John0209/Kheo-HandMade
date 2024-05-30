@@ -88,7 +88,7 @@
     async function checkLogin() {
         try {
             //Call API
-            const response = await fetch('https://1f0a-202-92-4-186.ngrok-free.app/api/v1/accounts/login?type=LoginByEmail', {
+            const response = await fetch('https://handmade.somee.com/api/v1/accounts/login?type=LoginByEmail', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -99,32 +99,30 @@
                     password: document.getElementById('pass').value
                 })
             });
-            alert(document.getElementById('email').value);
             //Nhận result from api
-            const data = await response.json();
-
-            alert(data.JSON);
-            if (data.success) {
-                window.location.href = '/HandMadeFE/pages/homepage.html';
+            const status = response.status;
+            if (status >= 200 && status < 300) {
+                let data = await response.json();
+                window.location.href = '/HandMadeFE/Login_v2/pages/homepage.html';
             } else {
                 alert('Wrong information');
             }
+
+
         } catch (error) {
             console.log(error)
         }
     }
 
     // gắn event cho button login
-   
-    document.getElementById('btnLogin').addEventListener('click', async function(e) {
+
+    document.getElementById('btnLogin').addEventListener('click', async function (e) {
 
         e.preventDefault();
-      
-        //await checkLogin();
-      
-        window.location.href = '../Login_v2/pages/homepage.html';
-      
-      }, true);
+
+        await checkLogin();
+
+    }, true);
 
 })(jQuery);
 
