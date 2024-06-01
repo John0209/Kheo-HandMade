@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     <div class="product-items">
         <img src="../images/candle.jpg" class="product-image"/>
         <p>${x.categoryName}</p>
-        <h2>${x.productName}</h2>
+        <a href="../pages/product.html?id=${x.productId}">${x.productName}</a>
         <div class="product-star">
         <i class="fa-solid fa-star"></i>
         <i class="fa-solid fa-star"></i>

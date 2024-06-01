@@ -8,6 +8,7 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/product.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <!--===============================================================================================-->
@@ -17,7 +18,6 @@
 </head>
 
 <body>
-    <div id="header"></div>
 
     <header>
 
@@ -134,16 +134,11 @@
                         <p style="color:orange">33 sản phẩm có sẵn</p>
                     </div>
 
-                    <div id="title">
-                        <p>Nến thơm cốc dừa
-                            Bến Tre thơm mùi quê hương</p>
-                    </div>
+                    <div id="title"></div>
 
                     <hr id="hr">
 
-                    <div id="price">
-                        129.000đ
-                    </div>
+                    <div id="price"></div>
 
                     <hr id="hr">
 
@@ -190,13 +185,15 @@
     <div class="container">
         <div id="description">
             <h5>Tổng Quan</h5>
-            <p>Đôi khi, cảm giác thật tuyệt khi có một ngọn nến đẹp tỏa ra hương thơm và mang đến sự thanh thản,
-                truyền cảm hứng cho tâm hồn chúng ta đạt đến trạng thái tĩnh lặng để chiêm nghiệm những điều giản dị
-                trong cuộc sống.
-                Nến Thơm Phòng Cao Cấp Heber Natural Life có thể giúp bạn điều đó.
-                Nếu bạn cảm thấy mọi thứ đang trở nên tồi tệ, hãy đốt ngọn nến này để có được sự hài lòng ngay lập
-                tức!
-            </p>
+            <div id="des-content">
+                <p>Đôi khi, cảm giác thật tuyệt khi có một ngọn nến đẹp tỏa ra hương thơm và mang đến sự thanh thản,
+                    truyền cảm hứng cho tâm hồn chúng ta đạt đến trạng thái tĩnh lặng để chiêm nghiệm những điều giản dị
+                    trong cuộc sống.
+                    Nến Thơm Phòng Cao Cấp Heber Natural Life có thể giúp bạn điều đó.
+                    Nếu bạn cảm thấy mọi thứ đang trở nên tồi tệ, hãy đốt ngọn nến này để có được sự hài lòng ngay lập
+                    tức!
+                </p>
+            </div>
             <hr id="hr">
             <h5>Thông Tin Chi Tiết</h5>
 
@@ -355,7 +352,9 @@
                     <div id="content">
                         <span>Giao hàng siêu nhanh, mới đặt hôm qua mà nay đã có rồi, thật tuyệt vời
                             cho shop 10đ, mọi người mua ủng hộ HandMade nhé, shop vô cùng uy tín luôn nè.
-                            Mình ít review lắm nhma vừa nhận đc là phải review liền, đóng gói siêu cẩn thận packaging đẹp nữa, shop tỉ mỉ từng chút luôn á, nến thì thơm cực kì nha, mùi vườn xuân này giống y chang mô tả của shop luôn đó.
+                            Mình ít review lắm nhma vừa nhận đc là phải review liền, đóng gói siêu cẩn thận packaging
+                            đẹp nữa, shop tỉ mỉ từng chút luôn á, nến thì thơm cực kì nha, mùi vườn xuân này giống y
+                            chang mô tả của shop luôn đó.
                         </span>
                     </div>
                     <hr id="hr">
@@ -369,23 +368,83 @@
     <footer>
         <hr id="hr">
         <div class="container">
-            <div class="row">
+            <div class="row" id="footer">
                 <div class="col-sm-3">
-                    <h4>Liên hệ chúng tôi</h4>
+                    <h5>LIÊN HỆ CHÚNG TÔI</h5>
+
+                    <div id="contact">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <p>Thứ Hai - Thứ Sáu</p>
+                            <p>Thời Gian 08h00 - 20h00</p>
+                            <span>+(1) 123 123 1230</span>
+                        </div>
+                    </div>
+
+                    <div id="contact">
+                        <i class="fa-regular fa-envelope"></i>
+                        <div>
+                            <p>Bạn cần giúp đỡ?</p>
+                            <p>support@kheo.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <h5>VỀ KHÉO</h5>
+                    <div id="kheo">
+                        <p>Giới thiệu về Khéo</p>
+                        <p>Điều khoản</p>
+                        <p>Chính sách bảo mật</p>
+                        <p>Danh sách yêu thích</p>
+                        <p>Chính sách bảo mật</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <h5>HỖ TRỢ KHÁCH HÀNG</h5>
+                    <div id="kheo">
+                        <p>Liên hệ chúng tôi</p>
+                        <p>Trung tâm trợ giúp</p>
+                        <p>Trả lại & Trao đổi</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <h5>THEO DÕI</h5>
+                    <div id="contact">
+                        <i class="fa-brands fa-facebook"></i>
+                        <p> </p>
+                        <i class="fa-brands fa-tiktok"></i>
+                        <p> </p>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <h5>PHƯƠNG THỨC THANH TOÁN</h5>
+                    <div id="contact">
+                        <i class="fa-brands fa-cc-visa"></i>
+                        <p> </p>
+                        <i class="fa-brands fa-cc-mastercard"></i>
+                        <p> </p>
+                        <i class="fa-brands fa-apple-pay"></i>
+                    </div>
+                </div>
+
+                <hr id="hr">
+            </div>
+
+            <div class="row" id="footer">
+                <div class="col-sm-3">
+                    <p>© 2024 Kheo. All Rights Reserved</p>
+                </div>
+                <div class="col-sm-6">
+                    <p>Quyền riêng tư · Điều khoản · Sơ đồ trang web</p>
                 </div>
                 <div class="col-sm-3">
-                    <h4>Về KHÉO</h4>
-                </div>
-                <div class="col-sm-3">
-                    <h4>Hỗ trợ khách hàng</h4>
-                </div>
-                <div class="col-sm-3">
-                    <h4>Theo dõi</h4>
+                    <p>Tiền tệ: VND - Ngôn ngữ: Tiếng Việt</p>
                 </div>
             </div>
         </div>
     </footer>
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="../js/product.js"></script>
 </body>
 
