@@ -478,4 +478,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-appsettings.Production.json
+
+HandMade\Presentation\appsettings.Production.json
