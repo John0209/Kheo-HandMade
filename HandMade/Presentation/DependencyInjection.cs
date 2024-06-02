@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using ClassLibrary1.Interface;
 using ClassLibrary1.Interface.IRepositories;
 using ClassLibrary1.Repositories;
+using ClassLibrary1.Third_Parties;
 using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Any;
@@ -32,6 +33,7 @@ public static class DependencyInjection
             .WithScopedLifetime());
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<ICloudConfig, CloudConfig>();
         services.AddControllers()
             //allow enum string value in swagger and front-end instead of int value
             .AddJsonOptions(options =>

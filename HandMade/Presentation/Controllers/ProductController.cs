@@ -1,6 +1,8 @@
+using Application.ErrorHandlers;
 using ClassLibrary1.Dtos.RequestDto.Product;
 using ClassLibrary1.Dtos.ResponseDto.Product;
 using ClassLibrary1.Interface.IServices;
+using ClassLibrary1.Third_Parties.Service;
 using DataAccess.Enum;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,10 +13,12 @@ namespace HandMade.Controllers;
 public class ProductController : ControllerBase
 {
     private IProductService _productService;
+    private ICloudService _cloud;
 
-    public ProductController(IProductService productService)
+    public ProductController(IProductService productService, ICloudService cloud)
     {
         _productService = productService;
+        _cloud = cloud;
     }
     /// <summary>
     /// 
@@ -68,4 +72,13 @@ public class ProductController : ControllerBase
             Message = "Delete product successful"
         });
     }
+
+    [HttpPost("image")]
+    public async Task<ActionResult<string>> UploadImageAsync(IFormFile file)
+    {
+        if (file == null) throw new BadRequestException("File is empty");
+        var result =await _cloud.UploadImage(file);
+        return Ok(result);
+    }
+    
 }

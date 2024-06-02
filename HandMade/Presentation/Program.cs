@@ -1,3 +1,4 @@
+using ClassLibrary1.Third_Parties;
 using HandMade;
 using WebAPI.Middlewares;
 
@@ -10,7 +11,7 @@ var dbConnection = builder.Configuration.GetConnectionString("HandMadeDB") ?? ""
 builder.Services.AddDependency(dbConnection);
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 //Add cors
 builder.Services.AddCors(options =>
@@ -22,7 +23,8 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
     });
 });
-
+//Third-parties
+builder.Services.Configure<CloudConfig>(builder.Configuration.GetSection(CloudConfig.ConfigName));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
