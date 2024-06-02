@@ -76,7 +76,7 @@ public class ProductController : ControllerBase
     [HttpPost("image")]
     public async Task<ActionResult<string>> UploadImageAsync(IFormFile file)
     {
-        if (file == null) throw new BadRequestException("File is empty");
+        if (file == null) throw new BadRequestException("File is emptys");
         var result =await _cloud.UploadImage(file);
         return Ok(result);
     }
