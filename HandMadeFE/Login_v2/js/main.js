@@ -104,10 +104,12 @@
             if (status >= 200 && status < 300) {
                 let data = await response.json();
                 //window.location.href = '/HandMadeFE/Login_v2/pages/homepage.html';
-                window.location.href = '/Login_v2/pages/homepage.html';
+                window.location.href = window.location.origin + '/Login_v2/pages/homepage.html';
             } else {
                 alert('Wrong information');
             }
+
+            
 
 
         } catch (error) {
