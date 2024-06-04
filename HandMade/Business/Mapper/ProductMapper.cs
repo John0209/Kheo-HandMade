@@ -16,7 +16,8 @@ public static class ProductMapper
             Status = x.Status.ToString(),
             CategoryId = x.Category!.Id,
             CategoryName = x.Category.Name,
-            Description = x.Description
+            Description = x.Description,
+            Picture = x.Picture
         }).ToList();
     }
 
@@ -29,6 +30,7 @@ public static class ProductMapper
         Status = x.Status.ToString(),
         CategoryId = x.Category!.Id,
         CategoryName = x.Category.Name,
-        Description = x.Description
+        Description = x.Description,
+        Picture = x.Picture
     };
 }

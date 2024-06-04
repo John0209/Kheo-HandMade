@@ -1,5 +1,3 @@
-
-
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Storage.v1;
 using Google.Apis.Storage.v1.Data;
@@ -9,11 +7,14 @@ using Newtonsoft.Json;
 
 namespace ClassLibrary1.Third_Parties.Service;
 
-public class CloudService:ICloudService
+public class CloudService : ICloudService
 {
     private ICloudConfig _cloud;
     private GoogleCredential _credential;
     private StorageClient _storage;
+    private readonly string _bucketName = "handmade01";
+    private readonly string _imageName = "Image_";
+
     public CloudService(ICloudConfig cloud)
     {
         _cloud = cloud;
@@ -29,20 +30,18 @@ public class CloudService:ICloudService
         _storage = StorageClient.Create(_credential);
     }
 
-    public async Task<string?> UploadImage(IFormFile file)
+    public async Task<string?> UploadImage(IFormFile file, int id)
     {
         InitializeCloud();
         var stream = new MemoryStream();
         await file.CopyToAsync(stream);
         stream.Position = 0;
 
-        var imageName = $"{file.FileName}";
-        var bucketName = "handmade01";
         var type = "image/png";
         var obj = new Google.Apis.Storage.v1.Data.Object
         {
-            Bucket = bucketName,
-            Name = imageName,
+            Bucket = _bucketName,
+            Name = _imageName + id,
             ContentType = type,
             Acl = new List<ObjectAccessControl>
             {
@@ -53,10 +52,15 @@ public class CloudService:ICloudService
                 }
             }
         };
-        var result= await _storage.UploadObjectAsync(obj, stream);
+        await _storage.UploadObjectAsync(obj, stream);
 
-        UrlSigner url = UrlSigner.FromCredential(_credential);
-        return url.Sign(bucketName, imageName, TimeSpan.FromHours(1), HttpMethod.Get);
+        return GetLinkImage(id);
     }
-    
+
+    public string GetLinkImage(int id)
+    {
+        InitializeCloud();
+        UrlSigner url = UrlSigner.FromCredential(_credential);
+        return url.Sign(_bucketName, _imageName + id, TimeSpan.FromHours(1), HttpMethod.Get);
+    }
 }

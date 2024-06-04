@@ -11,6 +11,7 @@ public class Customer : BaseEntity
     [MaxLength(100)] public string? PassWord { get; set; }
     [MaxLength(50)] public string? Email { get; set; }
     [MaxLength(100)] public string? Address { get; set; }
+    public string? Picture { get; set; }
 
     [Range(6,8)] public int TokenCode { get; set; }
     public UserStatus Status { get; set; }
