@@ -3,8 +3,9 @@ document.addEventListener('DOMContentLoaded',async function(){
     console.log(data);
     
     const render= ()=>{
-        const {productName,price,description}=data;
-
+        const {productName,price,description,picture}=data;
+        
+        document.getElementById('image-product').innerHTML=` <img src="${picture}" id="image-crop">`
         document.getElementById('title').innerHTML=`<p>${productName}</p>`;
         document.getElementById('price').innerHTML=formatCurrency(price);
         // document.getElementById('des-content').innerHTML=`<p>${description}</p>`;

@@ -36,11 +36,27 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form">
 					<span class="login100-form-title p-b-26">
-						HandMade
+						Đăng Ký
 					</span>
 					<span class="login100-form-title p-b-48">
 						<img src="images/kheo.png" id="kheo-logo">
 					</span>
+
+
+					<div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+						<input class="input100" type="text" id="name">
+						<span class="focus-input100" data-placeholder="Họ và tên"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+						<input class="input100" type="date" id="birthday">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+						<input class="input100" type="text" id="phone">
+						<span class="focus-input100" data-placeholder="Số điện thoại"></span>
+					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
 						<input class="input100" type="text" id="email">
@@ -52,31 +68,45 @@
 							<i class="zmdi zmdi-eye"></i>
 						</span>
 						<input class="input100" type="password" id="pass">
-						<span class="focus-input100" data-placeholder="Mật khẩu"></span>
+						<span class="focus-input100" data-placeholder="Mật Khẩu"></span>
 					</div>
+
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" id="btnLogin">
-								ĐĂNG NHẬP
+							<button class="login100-form-btn" id="btnRegister">
+								ĐĂNG KÝ
 							</button>
 						</div>
 					</div>
+
 					<div class="text-center p-t-115">
 						<span class="txt1">
-							Bạn chưa có tài khoản?
+							Bạn đã có tài khoản?
 						</span>
 
-						<a class="txt2" href="/Login_v2/register.html">
-							Đăng ký ngay
+						<a class="txt2" href="/Login_v2/login.html">
+							Đăng nhập ngay
 						</a>
 					</div>
-					
+
 				</form>
 			</div>
+
+			<div id="verify-form">
+				<p>Nhập Mã Xác Thực Tài Khoản</p>
+				<form>
+					<input type="number" id="code"/> <br>
+					<button id="btnVerify">
+						XÁC THỰC
+					</button>
+				</form>
+			</div>
+
 		</div>
 	</div>
+
 
 
 	<div id="dropDownSelect1"></div>
@@ -91,7 +121,7 @@
 	<script src="vendor/daterangepicker/moment.min.js"></script>
 	<script src="vendor/daterangepicker/daterangepicker.js"></script>
 	<script src="vendor/countdowntime/countdowntime.js"></script>
-	<script src="js/main.js"></script>
+	<script src="js/register.js"></script>
 
 </body>
 

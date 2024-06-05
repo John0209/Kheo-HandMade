@@ -1,4 +1,5 @@
 
+
 (function ($) {
     "use strict";
 
@@ -85,42 +86,75 @@
 
     });
 
-    async function checkLogin() {
+    async function Register() {
         try {
-            //Call API
-            const response = await fetch('https://handmade.somee.com/api/v1/accounts/login?type=LoginByEmail', {
+            //Call API  
+
+            const response = await fetch('https://handmade.somee.com/api/v1/accounts/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    phoneNumber: '0397528860',
                     email: document.getElementById('email').value,
-                    password: document.getElementById('pass').value
+                    password: document.getElementById('pass').value,
+                    name: document.getElementById('name').value,
+                    birthDate: document.getElementById('birthday').value,
+                    phoneNumber: document.getElementById('phone').value,
                 })
             });
-            //Nhận result from api
-            const status = response.status;
-            if (status >= 200 && status < 300) {
-                let data = await response.json();
-                window.location.href = '/Login_v2/pages/homepage.html';
-            } else {
-                alert('Nhập sai email, mật khẩu hoặc tài khoản chưa được xác thực');
+
+            const status= response.status;
+
+            if(status>=200 && status<300){
+                const form= document.getElementById('verify-form');
+                form.style.display='block';
+            }else{
+                alert('Đăng ký tài khoản thất bại');
             }
+
         } catch (error) {
-            console.log(error)
+            alert(error)
         }
     }
 
+    async function VerifyAccount(){
+        try{
+            const response=await fetch('https://handmade.somee.com/api/v1/accounts/verify',{
+                method: 'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({
+                    email:document.getElementById('email').value,
+                    code:document.getElementById('code').value
+                })
+            });
+            const status=response.status;
+
+            if(status>=200 && status<300){
+                alert('Xác thực tài khoản thành công');
+                window.location.href='/Login_v2/login.html';
+            }else{
+                alert('Mã xác thực sai, vui lòng nhập lại');
+            }
+
+        }catch(error){
+            alert(error)
+        }
+    }
     // gắn event cho button login
-
-    document.getElementById('btnLogin').addEventListener('click', async function (e) {
-
+  
+    document.getElementById('btnRegister').addEventListener('click', async function (e) {
         e.preventDefault();
-
-        await checkLogin();
-
+        Register();
     }, true);
+
+    document.getElementById('btnVerify').addEventListener('click', async function(e){
+        e.preventDefault();
+        VerifyAccount();
+    },true);
+    
 
 })(jQuery);
 
