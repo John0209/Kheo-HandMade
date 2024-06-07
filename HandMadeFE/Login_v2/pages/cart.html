@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/cart.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!--===============================================================================================-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row" style="margin: 10px 0 -20px 0;">
+                    <div class="col-sm-6 header-contact">
+                        <p><i class="fa-solid fa-location-dot"></i> Làng Đại học tp.HCM</p>
+                        <p><i class="fa-solid fa-phone"></i> Bạn cần trợ giúp? Gọi ngay: 19001080</p>
+                    </div>
+                    <div class="col-sm-6 header-contact">
+                        <p><i class="fa-solid fa-language"></i> Tiếng Việt / VNĐ</p>
+                        <p><i class="fa-solid fa-circle-info"></i> Trợ Giúp</p>
+                        <p><i class="fa-brands fa-facebook"></i> <i class="fa-brands fa-instagram"> </i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 header-contact">
+                        <img src="../images/kheo.png" class="logo">
+                    </div>
+
+                    <div class="search-box col-sm-4 header-contact">
+                        <input class="search" placeholder="Tìm kiếm" type="search">
+                        <i class="fa-solid fa-magnifying-glass searchIcon"></i>
+                    </div>
+
+                    <div class="col-sm-4" id="contact-menu">
+                        <div class="header-contact">
+                            <div class="frame-notify">
+                                <i class="fa-solid fa-bell icon-login"></i>
+                            </div>
+                            <div class="login-text">
+                                <p>Reng reng</p>
+                                <p2 style="font-weight: bold;">Thông báo</p2>
+                            </div>
+
+                            <div class="frame-cart">
+                                <i class="fa-solid fa-cart-shopping icon-login"></i>
+                            </div>
+                            <div class="login-text">
+                                <p>Giỏ hàng</p>
+                                <p2 style="font-weight: bold;">Mua ngay</p2>
+                            </div>
+
+                            <div class="frame-login">
+                                <i class="fa-solid fa-user icon-login"></i>
+                            </div>
+                            <div class="login-text">
+                                <p>Đăng nhập</p>
+                                <p2 style="font-weight: bold;">Tài khoản</p2>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row" style="margin-top: 20px;">
+
+                    <div class="col-sm-4 header-contact">
+                        <div class="menu-bar">
+                            <button class="btn"><i class="fa-solid fa-bars"></i></button>
+                            <p>Danh mục</p>
+                            <div class="menu-options">
+                                <div>Option 1</div>
+                                <div>Option 2</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-home col-sm-4">
+                        <p>Trang chủ</p>
+                        <p>Sản phẩm</p>
+                        <p>Liên hệ</p>
+                        <p>Bài viết</p>
+                    </div>
+
+                    <div class="menu-promotion col-sm-4">
+                        <p>Ưu đãi đặc biệt|</p>
+                        <p>Ưu đãi trong ngày|</p>
+                        <p>Bán chạy nhất|</p>
+                        <p>Quà mới</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <br>
+
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div id="selectAll">
+                        <div style="display: flex;">
+                            <input type="checkbox" id="input-box"></input>
+                            <p>CHỌN TẤT CẢ</p>
+                        </div>
+                        <button type="button" id="icon">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+
+                    <div id="product">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div id="select-one">
+                                    <input type="checkbox" id="input-box">
+                                    <img src="../images/candle.jpg">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <p>Nến nhỏ xinh đẹp</p>
+                            </div>
+                            <div class="col-sm-2">
+                                <div id="price">
+                                    <span>39.000đ</span>
+                                    <button type="submit" id="icon">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div id="add-to-card">
+                                    <button id="minus">-</button>
+                                    <input type="text" min="1" max="20" value="1" id="pro-quantity" />
+                                    <button id="plus">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-4">
+                    <div id="payment">
+                        <div id="address">
+                            <span>Địa Điểm</span>
+                            <div style="display: flex; margin: 10px 0 -10px 0;">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <p>Tòa S115 Vinhome Quận 9, TP.HCM</p>
+                            </div>
+                        </div>
+                        <hr id="hr">
+
+                        <div id="infor-cart">
+                            <h5>Thông tin đơn hàng</h5>
+                            <div id="infor-child">
+                                <span>Số lượng sản phẩm</span>
+                                <p id="quantity">50</p>
+                            </div>
+                            <div id="infor-child">
+                                <span>Giá tiền sản phẩm</span>
+                                <p id="price">150.000</p>
+                            </div>
+                            <div id="infor-child">
+                                <span>Phí vận chuyển</span>
+                                <p id="ship">10.000</p>
+                            </div>
+                            <div id="voucher">
+                                <input type="text" id="voucher-enter" placeholder="Mã giảm giá">
+                                <button>ÁP DỤNG</button>
+                            </div>
+                            <div id="infor-child">
+                                <p>Phí vận chuyển</p>
+                                <h5 id="total">100.000</h5>
+                            </div>
+                            <button id="confirm">
+                                XÁC NHẬN GIỎ HÀNG
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <hr id="hr">
+        <div class="container">
+            <div class="row" id="footer">
+                <div class="col-sm-3">
+                    <h5>LIÊN HỆ CHÚNG TÔI</h5>
+
+                    <div id="contact">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <p>Thứ Hai - Thứ Sáu</p>
+                            <p>Thời Gian 08h00 - 20h00</p>
+                            <span>+(1) 123 123 1230</span>
+                        </div>
+                    </div>
+
+                    <div id="contact">
+                        <i class="fa-regular fa-envelope"></i>
+                        <div>
+                            <p>Bạn cần giúp đỡ?</p>
+                            <p>support@kheo.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <h5>VỀ KHÉO</h5>
+                    <div id="kheo">
+                        <p>Giới thiệu về Khéo</p>
+                        <p>Điều khoản</p>
+                        <p>Chính sách bảo mật</p>
+                        <p>Danh sách yêu thích</p>
+                        <p>Chính sách bảo mật</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <h5>HỖ TRỢ KHÁCH HÀNG</h5>
+                    <div id="kheo">
+                        <p>Liên hệ chúng tôi</p>
+                        <p>Trung tâm trợ giúp</p>
+                        <p>Trả lại & Trao đổi</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <h5>THEO DÕI</h5>
+                    <div id="contact">
+                        <i class="fa-brands fa-facebook"></i>
+                        <p> </p>
+                        <i class="fa-brands fa-tiktok"></i>
+                        <p> </p>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <h5>PHƯƠNG THỨC THANH TOÁN</h5>
+                    <div id="contact">
+                        <i class="fa-brands fa-cc-visa"></i>
+                        <p> </p>
+                        <i class="fa-brands fa-cc-mastercard"></i>
+                        <p> </p>
+                        <i class="fa-brands fa-apple-pay"></i>
+                    </div>
+                </div>
+
+                <hr id="hr">
+            </div>
+
+            <div class="row" id="footer">
+                <div class="col-sm-3">
+                    <p>© 2024 Kheo. All Rights Reserved</p>
+                </div>
+                <div class="col-sm-6">
+                    <p>Quyền riêng tư · Điều khoản · Sơ đồ trang web</p>
+                </div>
+                <div class="col-sm-3">
+                    <p>Tiền tệ: VND - Ngôn ngữ: Tiếng Việt</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/cart.js"></script>
+</body>
+
+</html>
