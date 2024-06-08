@@ -20,7 +20,6 @@
 <body>
 
     <header>
-
         <div class="container-fluid">
             <div class="container">
                 <div class="row" style="margin: 10px 0 -20px 0;">
@@ -53,25 +52,25 @@
 
                     <div class="col-sm-4" id="contact-menu">
                         <div class="header-contact">
-                            <div class="frame-notify">
+                            <button id="btnNotify">
                                 <i class="fa-solid fa-bell icon-login"></i>
-                            </div>
+                            </button>
                             <div class="login-text">
                                 <p>Reng reng</p>
                                 <p2 style="font-weight: bold;">Thông báo</p2>
                             </div>
 
-                            <div class="frame-cart">
+                            <button id="btnCart">
                                 <i class="fa-solid fa-cart-shopping icon-login"></i>
-                            </div>
+                            </button>
                             <div class="login-text">
                                 <p>Giỏ hàng</p>
                                 <p2 style="font-weight: bold;">Mua ngay</p2>
                             </div>
 
-                            <div class="frame-login">
+                            <button id="btnLogin">
                                 <i class="fa-solid fa-user icon-login"></i>
-                            </div>
+                            </button>
                             <div class="login-text">
                                 <p>Đăng nhập</p>
                                 <p2 style="font-weight: bold;">Tài khoản</p2>
@@ -148,11 +147,7 @@
                     <hr id="hr">
 
                     <div id="buy">
-                        <div id="quantity" class="input-group">
-                            <button class="btn-quantity" type="button">-</button>
-                            <input type="number" class="form-control" value="1">
-                            <button class="btn-quantity" type="button">+</button>
-                        </div>
+                        <div id="quantity"> </div>
                         <button id="addToCard">
                             Thêm vào giỏ hàng
                         </button>
@@ -451,6 +446,7 @@
         </div>
     </footer>
     <script src="../js/product.js"></script>
+    <script src="../js/header.js"></script>
 </body>
 
 </html>

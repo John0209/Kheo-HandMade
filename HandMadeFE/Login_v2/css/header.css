@@ -44,7 +44,7 @@
     left: 92%;
 }
 
-.frame-login {
+#btnLogin{
     width: 38px;
     height: 38px;
     border: solid white;
@@ -52,7 +52,7 @@
     background-color: #F57C20;
 }
 
-.frame-cart {
+#btnCart{
     width: 38px;
     height: 38px;
     border: solid white;
@@ -60,7 +60,7 @@
     background-color: #79B94F;
 }
 
-.frame-notify {
+#btnNotify{
     width: 38px;
     height: 38px;
     border: solid white;
@@ -69,10 +69,10 @@
 }
 
 .icon-login {
-    position: relative;
+    /* position: relative;
     top: 36%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
     color: white;
 }
 

@@ -18,23 +18,26 @@
     margin: 10px 0 15px 10px;
 }
 
-#input-box {
+.box {
     margin: 3px 0 0 15px;
-    background-color: #F57224 !important;
+    background-color: #F57224;
 }
 
-#input-box:checked {
-    background-color: #F57224 !important;
-}
 
-#icon {
+.icon {
     font-size: 15px;
     border: none;
     margin-right: px;
     color: #49A1C2;
     margin-right: 15px;
 }
-
+.remove {
+    font-size: 15px;
+    border: none;
+    margin-right: px;
+    color: #49A1C2;
+    margin-right: 15px;
+}
 #product {
     width: 85%;
     height: 120px;
@@ -94,11 +97,11 @@
     color: white;
 }
 
-#plus {
+.plus {
     background-color: #f57124cb;
 }
 
-#minus {
+.minus {
     background-color: #f5712480;
 }
 /* --------------- */

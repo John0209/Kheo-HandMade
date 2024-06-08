@@ -18,7 +18,6 @@
 <body>
 
     <header>
-
         <div class="container-fluid">
             <div class="container">
                 <div class="row" style="margin: 10px 0 -20px 0;">
@@ -51,25 +50,25 @@
 
                     <div class="col-sm-4" id="contact-menu">
                         <div class="header-contact">
-                            <div class="frame-notify">
+                            <button id="btnNotify">
                                 <i class="fa-solid fa-bell icon-login"></i>
-                            </div>
+                            </button>
                             <div class="login-text">
                                 <p>Reng reng</p>
                                 <p2 style="font-weight: bold;">Thông báo</p2>
                             </div>
 
-                            <div class="frame-cart">
+                            <button id="btnCart">
                                 <i class="fa-solid fa-cart-shopping icon-login"></i>
-                            </div>
+                            </button>
                             <div class="login-text">
                                 <p>Giỏ hàng</p>
                                 <p2 style="font-weight: bold;">Mua ngay</p2>
                             </div>
 
-                            <div class="frame-login">
+                            <button id="btnLogin">
                                 <i class="fa-solid fa-user icon-login"></i>
-                            </div>
+                            </button>
                             <div class="login-text">
                                 <p>Đăng nhập</p>
                                 <p2 style="font-weight: bold;">Tài khoản</p2>
@@ -118,50 +117,22 @@
     </header>
 
     <br>
-
+ 
     <div class="container-fluid">
         <div class="container">
             <div class="row">
                 <div class="col-sm-8">
                     <div id="selectAll">
                         <div style="display: flex;">
-                            <input type="checkbox" id="input-box"></input>
+                            <input type="checkbox" class="box"></input>
                             <p>CHỌN TẤT CẢ</p>
                         </div>
-                        <button type="button" id="icon">
+                        <button type="button" class="icon">
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     </div>
 
-                    <div id="product">
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <div id="select-one">
-                                    <input type="checkbox" id="input-box">
-                                    <img src="../images/candle.jpg">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <p>Nến nhỏ xinh đẹp</p>
-                            </div>
-                            <div class="col-sm-2">
-                                <div id="price">
-                                    <span>39.000đ</span>
-                                    <button type="submit" id="icon">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div id="add-to-card">
-                                    <button id="minus">-</button>
-                                    <input type="text" min="1" max="20" value="1" id="pro-quantity" />
-                                    <button id="plus">+</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    <div id="loadCard"></div>
                 </div>
 
                 <div class="col-sm-4">
@@ -179,11 +150,11 @@
                             <h5>Thông tin đơn hàng</h5>
                             <div id="infor-child">
                                 <span>Số lượng sản phẩm</span>
-                                <p id="quantity">50</p>
+                                <p id="quantity">0</p>
                             </div>
                             <div id="infor-child">
                                 <span>Giá tiền sản phẩm</span>
-                                <p id="price">150.000</p>
+                                <p id="price">0</p>
                             </div>
                             <div id="infor-child">
                                 <span>Phí vận chuyển</span>
@@ -194,8 +165,8 @@
                                 <button>ÁP DỤNG</button>
                             </div>
                             <div id="infor-child">
-                                <p>Phí vận chuyển</p>
-                                <h5 id="total">100.000</h5>
+                                <p>Tổng cộng</p>
+                                <h5 id="total">0</h5>
                             </div>
                             <button id="confirm">
                                 XÁC NHẬN GIỎ HÀNG
@@ -289,6 +260,7 @@
         </div>
     </footer>
     <script src="../js/cart.js"></script>
+    <script src="../js/header.js"></script>
 </body>
 
 </html>
