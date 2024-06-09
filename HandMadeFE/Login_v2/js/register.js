@@ -106,10 +106,14 @@
 
             const status= response.status;
 
+            console.log(response.status)
             if(status>=200 && status<300){
                 const form= document.getElementById('verify-form');
                 form.style.display='block';
-            }else{
+            }if(status==409){
+                alert('Email đã được đăng ký');
+            }
+            else{
                 alert('Đăng ký tài khoản thất bại');
             }
 
