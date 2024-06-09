@@ -104,61 +104,60 @@
                 })
             });
 
-            const status= response.status;
-
-            console.log(response.status)
-            if(status>=200 && status<300){
-                const form= document.getElementById('verify-form');
-                form.style.display='block';
-            }if(status==409){
+            const status = response.status;
+            if (status >= 200 && status < 300) {
+                const form = document.getElementById('verify-form');
+                form.style.display = 'block';
+            } else if (status == 409) {
                 alert('Email đã được đăng ký');
-            }
-            else{
+            } else {
                 alert('Đăng ký tài khoản thất bại');
             }
+
+
 
         } catch (error) {
             alert(error)
         }
     }
 
-    async function VerifyAccount(){
-        try{
-            const response=await fetch('https://handmade.somee.com/api/v1/accounts/verify',{
+    async function VerifyAccount() {
+        try {
+            const response = await fetch('https://handmade.somee.com/api/v1/accounts/verify', {
                 method: 'POST',
-                headers:{
-                    'Content-Type':'application/json'
+                headers: {
+                    'Content-Type': 'application/json'
                 },
-                body:JSON.stringify({
-                    email:document.getElementById('email').value,
-                    code:document.getElementById('code').value
+                body: JSON.stringify({
+                    email: document.getElementById('email').value,
+                    code: document.getElementById('code').value
                 })
             });
-            const status=response.status;
+            const status = response.status;
 
-            if(status>=200 && status<300){
+            if (status >= 200 && status < 300) {
                 alert('Xác thực tài khoản thành công');
-                window.location.href='/Login_v2/login.html';
-            }else{
+                window.location.href = '/Login_v2/login.html';
+            } else {
                 alert('Mã xác thực sai, vui lòng nhập lại');
             }
 
-        }catch(error){
+        } catch (error) {
             alert(error)
         }
     }
     // gắn event cho button login
-  
+
     document.getElementById('btnRegister').addEventListener('click', async function (e) {
         e.preventDefault();
         Register();
     }, true);
 
-    document.getElementById('btnVerify').addEventListener('click', async function(e){
+    document.getElementById('btnVerify').addEventListener('click', async function (e) {
         e.preventDefault();
         VerifyAccount();
-    },true);
-    
+    }, true);
+
 
 })(jQuery);
 
