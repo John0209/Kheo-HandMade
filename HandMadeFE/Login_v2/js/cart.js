@@ -85,9 +85,11 @@ function handleClickMinus(e) {
     const id = parts[1];
 
     const minus = document.getElementById(btnId);
-    const quantity = document.getElementById(`quantity-${id}`);
+    const qty = document.getElementById(`quantity-${id}`);
+    const box = document.getElementById(`box-${id}`);
+    const pri = document.getElementById(`price-${id}`);
 
-    minus.addEventListener('click', handleQuantity(QuantityAction.MINUS, quantity));
+    minus.addEventListener('click', handleQuantity(QuantityAction.MINUS, qty), calculateQuantityWhenChecked(box, qty, pri, QuantityAction.MINUS));
 }
 
 function handleClickPlus(e) {
@@ -96,9 +98,15 @@ function handleClickPlus(e) {
     const id = parts[1];
 
     const plus = document.getElementById(btnId);
-    const quantity = document.getElementById(`quantity-${id}`);
+    const qty = document.getElementById(`quantity-${id}`);
+    const box = document.getElementById(`box-${id}`);
+    const pri = document.getElementById(`price-${id}`);
 
-    plus.addEventListener('click', handleQuantity(QuantityAction.PLUS, quantity));
+    // plus.addEventListener('click',()=>{
+    //     handleQuantity(QuantityAction.PLUS, qty);
+    //    // calculateQuantity(box,qty,pri,QuantityAction.PLUS);
+    // });
+    plus.addEventListener('click', handleQuantity(QuantityAction.PLUS, qty), calculateQuantityWhenChecked(box, qty, pri, QuantityAction.PLUS))
 }
 
 function handleQuantity(type, quantity) {
@@ -109,12 +117,18 @@ function handleQuantity(type, quantity) {
     } else {
         currentValue--;
     }
+
+    if (currentValue <= 0) {
+        currentValue = 1;
+    }
     return quantity.value = currentValue;
 }
 
 let price_cart = document.getElementById('price');
 let quantity_cart = document.getElementById('quantity');
 let total_cart = document.getElementById('total');
+let totalPrice = 0;
+let totalQuantity = 0;
 
 function handleBox(e) {
     const boxId = e.target.id;
@@ -125,42 +139,71 @@ function handleBox(e) {
     const qty = document.getElementById(`quantity-${id}`);
     const pri = document.getElementById(`price-${id}`);
 
-    var totalPrice = Number(price_cart.innerText);
+    calculateMoney(box, qty, pri);
+}
+
+let qtyPrevious=0;
+function calculateQuantityWhenChecked(box, qty, pri, type) {
     var price = Number(pri.value);
-    var totalQuantity = Number(quantity_cart.innerText);
+    var quantity = Number(qty.value);
+    var ship = 0;
+
+    if (box.checked && type === QuantityAction.PLUS) {
+        qtyPrevious=quantity;
+        totalQuantity += 1;
+        totalPrice += price;
+        ship = 10000;
+    }
+    if (box.checked && type === QuantityAction.MINUS) {
+        if(quantity===1 && qtyPrevious===1 ){
+            return
+        }
+        qtyPrevious=quantity;
+        totalQuantity -= 1;
+        totalPrice -= price;
+        ship = 10000;
+    }
+
+    updateDOM(totalQuantity, totalPrice, ship)
+}
+
+function calculateMoney(box, qty, pri) {
+    var price = Number(pri.value);
     var quantity = Number(qty.value);
     var ship = 10000;
 
     if (box.checked) {
         totalQuantity += quantity;
         totalPrice += (price * quantity);
-
     } else {
         totalQuantity -= quantity;
         totalPrice -= (price * quantity);
         ship = 0;
     }
 
-    quantity_cart.innerText = totalQuantity;
-    price_cart.innerText = totalPrice;
-    totalPrice += ship;
-    total_cart.innerText = totalPrice;
+    updateDOM(totalQuantity, totalPrice, ship);
 }
 
-function handleRemove(e) {
-    const btnId = e.target.id;
+function updateDOM(totalQuantity, totalPrice, ship) {
+    quantity_cart.innerText = totalQuantity;
+    price_cart.innerText =formatCurrency(totalPrice);
+    totalPrice += ship;
+    total_cart.innerText = formatCurrency(totalPrice);
+}
+ function handleRemove(e) {
+    const btnId = e.target.closest('.remove').id;
     const parts = btnId.split('-');
-    const number =Number(parts[1]);
+    const number = Number(parts[1]);
 
     if (number > -1) {
         const cart = JSON.parse(sessionStorage.getItem('cart'));
-        var newCart ={
+        var newCart = {
             products: cart.products.filter(x => x.productId !== number)
-         };
-         
+        };
+
         sessionStorage.setItem('cart', JSON.stringify(newCart));
         location.reload();
-    }else{
+    } else {
         alert('Thao tác quá nhanh, xin làm lại')
     }
 

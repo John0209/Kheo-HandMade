@@ -89,6 +89,10 @@
     font-weight: bold;
     justify-content: space-evenly;
 }
+.menu-home a{
+    color: black;
+    text-decoration:none;
+}
 .menu-promotion{
     display: flex;
     font-size: 15px;
