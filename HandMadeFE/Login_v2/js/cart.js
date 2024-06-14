@@ -3,8 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 let html = '';
+let cart = '';
 function LoadCart() {
-    const cart = JSON.parse(sessionStorage.getItem('cart'));
+    cart = JSON.parse(sessionStorage.getItem('cart'));
     console.log(cart)
     cart.products.map(x => {
         html += `
@@ -44,19 +45,16 @@ function LoadCart() {
     document.getElementById('loadCard').innerHTML = html;
 
 }
-
 function formatCurrency(price) {
     return new Intl.NumberFormat('vi-VN', {
         style: 'currency',
         currency: 'VND'
     }).format(price);
 }
-
 const QuantityAction = {
     PLUS: 'plus',
     MINUS: 'minus'
 };
-
 setTimeout(() => {
     const minusBtn = document.querySelectorAll('.minus');
     minusBtn.forEach(btn => {
@@ -68,7 +66,7 @@ setTimeout(() => {
         x.addEventListener('click', handleClickPlus)
     });
 
-    const checkBox = document.querySelectorAll('.box');
+    let checkBox = document.querySelectorAll('.box');
     checkBox.forEach(x => {
         x.addEventListener('click', handleBox)
     })
@@ -89,29 +87,30 @@ function handleClickMinus(e) {
     const box = document.getElementById(`box-${id}`);
     const pri = document.getElementById(`price-${id}`);
 
-    minus.addEventListener('click', handleQuantity(QuantityAction.MINUS, qty), calculateQuantityWhenChecked(box, qty, pri, QuantityAction.MINUS));
+    minus.addEventListener('click',handleMinus(box, qty, pri, id));
 }
-
 function handleClickPlus(e) {
     const btnId = e.target.id;
     const parts = btnId.split('-');
     const id = parts[1];
 
-    const plus = document.getElementById(btnId);
     const qty = document.getElementById(`quantity-${id}`);
     const box = document.getElementById(`box-${id}`);
     const pri = document.getElementById(`price-${id}`);
+    const plus = document.getElementById(btnId);
 
-    // plus.addEventListener('click',()=>{
-    //     handleQuantity(QuantityAction.PLUS, qty);
-    //    // calculateQuantity(box,qty,pri,QuantityAction.PLUS);
-    // });
-    plus.addEventListener('click', handleQuantity(QuantityAction.PLUS, qty), calculateQuantityWhenChecked(box, qty, pri, QuantityAction.PLUS))
+    plus.addEventListener('click', handlePlus(box, qty, pri, id));
 }
-
+function handlePlus(box, qty, pri, id) {
+    handleQuantity(QuantityAction.PLUS, qty);
+    calculateQuantityWhenChecked(box, qty, pri, QuantityAction.PLUS, id);
+}
+function handleMinus(box, qty, pri, id) {
+    handleQuantity(QuantityAction.MINUS, qty);
+    calculateQuantityWhenChecked(box, qty, pri, QuantityAction.MINUS, id);
+}
 function handleQuantity(type, quantity) {
     let currentValue = Number(quantity.value);
-
     if (type === QuantityAction.PLUS) {
         currentValue++;
     } else {
@@ -139,35 +138,34 @@ function handleBox(e) {
     const qty = document.getElementById(`quantity-${id}`);
     const pri = document.getElementById(`price-${id}`);
 
-    calculateMoney(box, qty, pri);
+    calculateMoney(box, qty, pri, id);
 }
-
-let qtyPrevious=0;
-function calculateQuantityWhenChecked(box, qty, pri, type) {
+let qtyPrevious = 0;
+function calculateQuantityWhenChecked(box, qty, pri, type, id) {
     var price = Number(pri.value);
     var quantity = Number(qty.value);
     var ship = 0;
 
     if (box.checked && type === QuantityAction.PLUS) {
-        qtyPrevious=quantity;
+        qtyPrevious = quantity;
         totalQuantity += 1;
         totalPrice += price;
         ship = 10000;
     }
     if (box.checked && type === QuantityAction.MINUS) {
-        if(quantity===1 && qtyPrevious===1 ){
+        if (quantity === 1 && qtyPrevious === 1) {
             return
         }
-        qtyPrevious=quantity;
+        qtyPrevious = quantity;
         totalQuantity -= 1;
         totalPrice -= price;
         ship = 10000;
     }
-
+    addProductToPayment(box, quantity, id);
     updateDOM(totalQuantity, totalPrice, ship)
 }
-
-function calculateMoney(box, qty, pri) {
+let selectedProductsArray = [];
+function calculateMoney(box, qty, pri, id) {
     var price = Number(pri.value);
     var quantity = Number(qty.value);
     var ship = 10000;
@@ -180,23 +178,21 @@ function calculateMoney(box, qty, pri) {
         totalPrice -= (price * quantity);
         ship = 0;
     }
-
+    addProductToPayment(box, quantity, id);
     updateDOM(totalQuantity, totalPrice, ship);
 }
-
 function updateDOM(totalQuantity, totalPrice, ship) {
     quantity_cart.innerText = totalQuantity;
-    price_cart.innerText =formatCurrency(totalPrice);
+    price_cart.innerText = formatCurrency(totalPrice);
     totalPrice += ship;
     total_cart.innerText = formatCurrency(totalPrice);
 }
- function handleRemove(e) {
+function handleRemove(e) {
     const btnId = e.target.closest('.remove').id;
     const parts = btnId.split('-');
     const number = Number(parts[1]);
 
     if (number > -1) {
-        const cart = JSON.parse(sessionStorage.getItem('cart'));
         var newCart = {
             products: cart.products.filter(x => x.productId !== number)
         };
@@ -208,5 +204,44 @@ function updateDOM(totalQuantity, totalPrice, ship) {
     }
 
 }
+function addProductToPayment(box, qty, id) {
+    const cartProduct = getProductFromCart(id);
+    const selectedProduct = getProductFromArray(id);
+
+    if (!cartProduct) return;
+
+    if (!box.checked)
+        return removeProductFromArray(id);
+
+    if (selectedProduct) {
+        selectedProduct.quantity = qty;
+    } else {
+        addProductToArray(cartProduct, qty);
+    }
+    console.log(selectedProductsArray);
+}
+function getProductFromCart(id) {
+    return cart.products.find(x => x.productId == id);
+}
+function getProductFromArray(id) {
+    return selectedProductsArray.find(x => x.productId == id);
+}
+function addProductToArray(cartProduct, qty) {
+    cartProduct.quantity = qty;
+    selectedProductsArray.push(cartProduct);
+}
+function removeProductFromArray(id) {
+    selectedProductsArray = selectedProductsArray.filter(x => x.productId != id);
+}
+
+const confirmBtn = document.getElementById('confirm');
+confirmBtn.addEventListener('click', redirectToPaymentPage);
+
+function redirectToPaymentPage() {
+    const arrayToJson = JSON.stringify(selectedProductsArray);
+    const query = `?data=${encodeURIComponent(arrayToJson)}`;
+    location.href = "../pages/payment.html" + query;
+}
+
 
 
