@@ -1,5 +1,6 @@
 using ClassLibrary1.Third_Parties;
 using HandMade;
+using WebAPI.Gateway.Configuration;
 using WebAPI.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,7 @@ builder.Services.AddCors(options =>
 });
 //Third-parties
 builder.Services.Configure<CloudConfig>(builder.Configuration.GetSection(CloudConfig.ConfigName));
+builder.Services.Configure<MomoConfig>(builder.Configuration.GetSection(MomoConfig.ConfigName));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

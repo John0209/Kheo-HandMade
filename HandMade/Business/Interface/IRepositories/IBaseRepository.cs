@@ -9,4 +9,5 @@ public interface IBaseRepository<T> where T : BaseEntity
     void Delete(T entity);
     Task AddAsync(T entity);
     Task<T?> GetByIdAsync(int id, bool disableTracking = false);
+    public Task AddRangeAsync(IEnumerable<T> entity);
 }

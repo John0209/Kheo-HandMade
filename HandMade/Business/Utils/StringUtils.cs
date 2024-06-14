@@ -34,7 +34,6 @@ public class StringUtils
     
     public static string GenerateRandomNumber(int length)
     {
-        //const string chars = "0123456789";
         const string chars = "0123456789";
         Random random = new Random();
         StringBuilder stringBuilder = new StringBuilder(length);

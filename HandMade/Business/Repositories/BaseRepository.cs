@@ -36,6 +36,11 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
         await DbSet.AddAsync(entity);
     }
 
+    public async Task AddRangeAsync(IEnumerable<T> entity)
+    {
+        await DbSet.AddRangeAsync(entity);
+    }
+
     public virtual async Task<T?> GetByIdAsync(int id, bool disableTracking = false)
     {
         IQueryable<T> query = DbSet;

@@ -8,6 +8,8 @@ using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using WebAPI.Gateway.Configuration;
+using WebAPI.Gateway.IConfig;
 
 namespace HandMade;
 
@@ -34,6 +36,8 @@ public static class DependencyInjection
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ICloudConfig, CloudConfig>();
+        services.AddScoped<IMomoConfig, MomoConfig>();
+        
         services.AddControllers()
             //allow enum string value in swagger and front-end instead of int value
             .AddJsonOptions(options =>
