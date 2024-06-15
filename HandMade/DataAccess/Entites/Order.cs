@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Entites;
 
-[Index(nameof(CustomerId), IsUnique = true)]
 public class Order : BaseEntity
 {
     public int OrderCode { get; set; }

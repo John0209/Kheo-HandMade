@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Entites;
 
-[Index(nameof(ProductId), IsUnique = true)]
 public class OrderDetail : BaseEntity
 {
     public int Quantity { get; set; }

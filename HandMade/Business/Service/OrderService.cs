@@ -18,17 +18,26 @@ public class OrderService : IOrderService
         _unit = unit;
     }
 
-    public async Task<int> CreateOrderAsync(OrderCreationRequestDto dto)
+    public async Task<int> CreateOrderAsync(OrderCreationRequestDto dto,PaymentType type)
     {
         var order = new Order()
         {
             OrderCode = Int32.Parse(StringUtils.GenerateRandomNumber(4)),
             OrderDate = DateTime.Now,
-            OrderStatus =(int) OrderStatus.Processing,
             CustomerId = dto.CustomerId,
             Quantity = dto.Quantity,
             Total = dto.Total
         };
+
+        switch (type)
+        {
+            case PaymentType.Momo:
+                order.OrderStatus = OrderStatus.Processing;
+                break;
+            case PaymentType.Cash:
+                order.OrderStatus = OrderStatus.Confirming;
+                break;
+        }
         
         var orderDetails = new List<OrderDetail>();
         foreach (var x in dto.Products)
@@ -75,5 +84,30 @@ public class OrderService : IOrderService
         var macth = regex.Match(id);
         if (macth.Success) return Int32.Parse(macth.Groups[1].Value);
         return 0;
+    }
+
+    public async Task<int> CreateOrderTestAsync(OrderCreationRequestDto dto)
+    {
+        var orderDetails = new List<OrderDetail>();
+        foreach (var x in dto.Products)
+        {
+            var detail = new OrderDetail()
+            {
+                Quantity = x.ProductQuantity,
+                ProductId = x.ProductId,
+                Price = x.ProductPrice,
+                OrderId = 29
+            };
+            orderDetails.Add(detail);
+        }
+
+        await _unit.OrderDetailRepository.AddRangeAsync(orderDetails);
+        var result = await _unit.SaveChangeAsync();
+        if (result < 1)
+        {
+            throw new NotImplementException("Create order failed");
+        }
+
+        return 3;
     }
 }

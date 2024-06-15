@@ -6,8 +6,9 @@ namespace ClassLibrary1.Interface.IServices;
 
 public interface IOrderService
 {
-    Task<int> CreateOrderAsync(OrderCreationRequestDto dto);
+    Task<int> CreateOrderAsync(OrderCreationRequestDto dto, PaymentType type);
     Order? GetOrderByProcessing(int id);
     public Task UpdateOrderStatus(int id, OrderStatus status);
     public int GetIdMomoResponse(string id);
+    public Task<int> CreateOrderTestAsync(OrderCreationRequestDto dto);
 }

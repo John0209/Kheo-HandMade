@@ -1,0 +1,37 @@
+#brg-image{
+    width: 100%;
+    height: 750px;
+    background-image: url(../images/success.jpg);
+    background-size: cover;
+    margin-left: 8%;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+#thanks{
+    text-align: center;
+    width: 50%;
+    height: 17%;
+    background-color: white;
+    position: absolute;
+    
+}
+#thanks h4{
+    color: #FF8A00;
+    margin-top: 3%;
+    font-size: 30px;
+}
+#thanks p{
+    font-weight: bold;
+    font-size: 20px;
+}
+#thanks span{
+    font-size: 20px;
+}
+#thanks button{
+    border: 1px solid #1A9CB7;
+    color: #1A9CB7;
+    background-color: white;
+    margin-left: 1%;
+    font-weight: bold;
+}

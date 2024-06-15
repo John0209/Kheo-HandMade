@@ -23,19 +23,24 @@ public class OrderController : Controller
     }
 
     [HttpPost]
-    public async Task<ActionResult<int>> CreateOrderAsync(OrderCreationRequestDto dto)
+    public async Task<ActionResult<int>> CreateOrderAsync(OrderCreationRequestDto dto, PaymentType type)
     {
-        var orderId = await _orderService.CreateOrderAsync(dto);
-        var result = _momoService.CreatePaymentMomoAsync(orderId);
-        return Ok(new
+        var orderId = await _orderService.CreateOrderAsync(dto, type);
+        switch (type)
         {
-            Link = result.Item1,
-            QR = result.Item2
-        });
+            case PaymentType.Cash:
+                return Ok(new
+                {
+                    OrderId = orderId
+                });
+            case PaymentType.Momo:
+                return CreateMomoPayment(orderId);
+        }
+         return Ok();
     }
 
     [HttpPost("momo/{id}")]
-    public ActionResult CreateMomoPament(int id)
+    public ActionResult CreateMomoPayment(int id)
     {
         var result = _momoService.CreatePaymentMomoAsync(id);
         return Ok(new
@@ -44,7 +49,7 @@ public class OrderController : Controller
             QR = result.Item2
         });
     }
-    
+
     [HttpGet]
     [Route("momo-return")]
     public async Task<IActionResult> MomoReturnAsync([FromQuery] MomoResultRequest dto)

@@ -89,7 +89,6 @@
     async function Register() {
         try {
             //Call API  
-
             const response = await fetch('https://handmade.somee.com/api/v1/accounts/register', {
                 method: 'POST',
                 headers: {
