@@ -35,7 +35,7 @@ function LoadProducts() {
         products.push(product);
     });
     productsHTML.innerHTML = html;
-    updateDOM(quantity, price, total);
+    updateDOM(quantity, price);
 }
 function formatCurrency(price) {
     return new Intl.NumberFormat('vi-VN', {
@@ -43,7 +43,7 @@ function formatCurrency(price) {
         currency: 'VND'
     }).format(price);
 }
-function updateDOM(quantity, price, total) {
+function updateDOM(quantity, price) {
     quantityHTML.innerText = quantity;
     priceHTML.innerText = formatCurrency(price);
     total = price + 10000;
@@ -76,6 +76,8 @@ radios.forEach(radio => {
 var orderBtn = document.getElementById('confirm');
 orderBtn.addEventListener('click', createOrder);
 async function createOrder() {
+    if (type === '') return alert('Vui lòng chọn hình thức thanh toán');
+
     try {
         const response = await fetch(`https://handmade.somee.com/api/v1/orders?type=${type}`, {
             method: 'POST',
@@ -89,16 +91,19 @@ async function createOrder() {
                 products: products
             })
         });
-        console.log(await response.json);
-        const status = response.status;
-        if(status >=200 && status <300){
-            switch(type){
-                case 'Momo':
 
+        const data = await response.json();
+        const status = response.status;
+        if (status >= 200 && status < 300) {
+            switch (type) {
+                case 'Momo':
+                    location.href = data.link;
+                    break;
                 case 'Cash':
-                    location.href= "../pages/success.html"
+                    location.href = "../pages/success.html";
+                    break;
             }
-        }else{
+        } else {
             alert('Thanh toán thật bại, vui lòng làm lại');
         }
 

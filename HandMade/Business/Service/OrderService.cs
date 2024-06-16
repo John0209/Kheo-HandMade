@@ -22,7 +22,7 @@ public class OrderService : IOrderService
     {
         var order = new Order()
         {
-            OrderCode = Int32.Parse(StringUtils.GenerateRandomNumber(4)),
+            OrderCode = Int32.Parse(StringUtils.GenerateRandomNumber(8)),
             OrderDate = DateTime.Now,
             CustomerId = dto.CustomerId,
             Quantity = dto.Quantity,
