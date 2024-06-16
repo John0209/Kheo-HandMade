@@ -78,6 +78,7 @@ orderBtn.addEventListener('click', createOrder);
 async function createOrder() {
     if (type === '') return alert('Vui lòng chọn hình thức thanh toán');
 
+    const account=JSON.parse(sessionStorage.getItem('account'));
     try {
         const response = await fetch(`https://handmade.somee.com/api/v1/orders?type=${type}`, {
             method: 'POST',
@@ -85,7 +86,7 @@ async function createOrder() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                customerId: 5,
+                customerId: account.customerId,
                 quantity: quantity,
                 total: total,
                 products: products

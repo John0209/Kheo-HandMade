@@ -56,9 +56,6 @@ public class OrderController : Controller
     {
         var orderId = _orderService.GetIdMomoResponse(dto.orderId);
         await _orderService.UpdateOrderStatus(orderId, OrderStatus.Confirming);
-        return Ok(new
-        {
-            Message = "OK"
-        });
+        return Redirect("https://kheo-handmade.vercel.app/Login_v2/pages/success.html");
     }
 }

@@ -85,6 +85,7 @@
 
     });
 
+
     async function checkLogin() {
         try {
             //Call API
@@ -102,7 +103,8 @@
             //Nhận result from api
             const status = response.status;
             if (status >= 200 && status < 300) {
-                let data = await response.json();
+                const data = await response.json();
+                sessionStorage.setItem('account',JSON.stringify(data));
                 window.location.href = '/Login_v2/pages/homepage.html';
             } else {
                 alert('Nhập sai email, mật khẩu hoặc tài khoản chưa được xác thực');

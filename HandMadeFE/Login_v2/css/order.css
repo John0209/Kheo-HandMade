@@ -1,0 +1,18 @@
+#order{
+    margin-left: 7%;
+}
+#order h3{
+    color: #1A9CB7;
+    font-weight: bold;
+    font-size: 25px;
+}
+#btnSelect{
+    display: flex;
+    justify-content: space-evenly;
+}
+#btnSelect button{
+    border:none;
+    background-color: white;
+    color: #212121;
+}
+

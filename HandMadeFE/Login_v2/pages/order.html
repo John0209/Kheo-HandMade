@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
+    <title>Orders</title>
+    <link rel="stylesheet" href="../css/order.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/cart.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <!--===============================================================================================-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-
 <body>
     <header>
         <div class="container-fluid">
@@ -116,67 +114,19 @@
 
     </header>
 
-    <br>
- 
     <div class="container-fluid">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-8">
-                    <div id="selectAll">
-                        <div style="display: flex;">
-                            <input type="checkbox" class="box"></input>
-                            <p>CHỌN TẤT CẢ</p>
-                        </div>
-                        <button type="button" class="icon">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </div>
-
-                    <div id="loadCard"></div>
+            <div id="order">
+                <h3>Đơn hàng của tôi</h3>
+                <div id="btnSelect">
+                    <button name="btnSelect" id="btnAll">Tất cả đơn hàng</button>
+                    <button name="btnSelect" id="btnProcess">Đợi thanh toán</button>
+                    <button name="btnSelect" id="btnConfirm">Đợi xác nhận</button>
+                    <button name="btnSelect" id="btnDelivery">Đang vận chuyển</button>
+                    <button name="btnSelect" id="btnSuccess">Đơn thành công</button>
+                    <button name="btnSelect" id="btnFail">Đơn thất bại</button>
                 </div>
-
-                <div class="col-sm-4">
-                    <div id="payment">
-                        <div id="address">
-                            <span>Địa Điểm</span>
-                            <div style="display: flex; margin: 10px 0 -10px 0;">
-                                <i class="fa-solid fa-location-dot"></i>
-                                <p>Tòa S115 Vinhome Quận 9, TP.HCM</p>
-                            </div>
-                        </div>
-                        <hr id="hr">
-
-                        <div id="infor-cart">
-                            <h5>Thông tin đơn hàng</h5>
-                            <div id="infor-child">
-                                <span>Số lượng sản phẩm</span>
-                                <p id="quantity">0</p>
-                                
-                            </div>
-                            <div id="infor-child">
-                                <span>Giá tiền sản phẩm</span>
-                                <p id="price">0</p>
-                            </div>
-                            <div id="infor-child">
-                                <span>Phí vận chuyển</span>
-                                <p id="ship">10.000</p>
-                            </div>
-                            <div id="voucher">
-                                <input type="text" id="voucher-enter" placeholder="Mã giảm giá">
-                                <button>ÁP DỤNG</button>
-                            </div>
-                            <div id="infor-child">
-                                <p>Tổng cộng</p>
-                                <h5 id="total">0</h5>
-                            </div>
-                            <button id="confirm">
-                                XÁC NHẬN GIỎ HÀNG
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-                
+                <hr id="selectHr">
             </div>
         </div>
     </div>
@@ -261,8 +211,7 @@
             </div>
         </div>
     </footer>
-    <script src="../js/cart.js"></script>
+    <script src="../js/order.js"></script>
     <script src="../js/header.js"></script>
 </body>
-
 </html>
