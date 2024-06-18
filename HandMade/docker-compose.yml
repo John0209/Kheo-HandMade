@@ -1,6 +1,8 @@
-﻿services:
-  handmade:
-    image: handmade
+version: '3.4'
+
+services:
+  presentation:
+    image: ${DOCKER_REGISTRY-}presentation
     build:
       context: .
-      dockerfile: HandMade/Dockerfile
+      dockerfile: Presentation\Dockerfile

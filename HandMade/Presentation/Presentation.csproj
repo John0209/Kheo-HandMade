@@ -4,7 +4,7 @@
         <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
         <RootNamespace>HandMade</RootNamespace>
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
         <DocumentationFile>D:\Kheo-HandMade\HandMade\Presentation\bin\Debug\net7.0\Presentation.xml</DocumentationFile>
