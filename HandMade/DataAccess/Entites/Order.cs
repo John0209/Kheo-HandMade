@@ -10,8 +10,11 @@ public class Order : BaseEntity
     public decimal Total { get; set; }
     public OrderStatus OrderStatus { get; set; }
     public DateTime OrderDate { get; set; }
+    public PaymentType PaymentType { get; set; }
 
     //Fk
     public int CustomerId { get; set; }
-    public Customer? Customer { get; set; }
+    public virtual Customer? Customer { get; set; }
+
+    public virtual ICollection<OrderDetail> OrderDetails { get; set; }= new List<OrderDetail>();
 }

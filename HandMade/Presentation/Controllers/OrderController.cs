@@ -1,5 +1,6 @@
 using Application.Dtos.Request.Order.Momo;
 using ClassLibrary1.Dtos.RequestDto.Order;
+using ClassLibrary1.Dtos.ResponseDto.Order;
 using ClassLibrary1.Interface.IServices;
 using ClassLibrary1.Third_Parties.Service;
 using DataAccess.Enum;
@@ -57,5 +58,18 @@ public class OrderController : Controller
         var orderId = _orderService.GetIdMomoResponse(dto.orderId);
         await _orderService.UpdateOrderStatus(orderId, OrderStatus.Confirming);
         return Redirect("https://kheo-handmade.vercel.app/Login_v2/pages/success.html");
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<List<OrderResponse>>> GetOrders(int customerId,OrderStatus status)
+    {
+        var result = await _orderService.GetOrders(status,customerId);
+        return Ok(result);
+    }
+    [HttpGet("id")]
+    public async Task<ActionResult<OrderDetailsResponse>> GetOrders(int id)
+    {
+        var result = await _orderService.GetOrderDetails(id);
+        return Ok(result);
     }
 }

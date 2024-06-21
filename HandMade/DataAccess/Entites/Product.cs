@@ -12,5 +12,5 @@ public class Product : BaseEntity
     public ProductStatus Status { get; set; }
     //FK
     public int CategoryId { get; set; }
-    public Category? Category { get; set; }
+    public virtual Category? Category { get; set; }
 }

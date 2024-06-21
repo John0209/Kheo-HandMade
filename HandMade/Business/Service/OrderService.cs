@@ -2,8 +2,10 @@ using System.Text.RegularExpressions;
 using Application.ErrorHandlers;
 using Application.Utils;
 using ClassLibrary1.Dtos.RequestDto.Order;
+using ClassLibrary1.Dtos.ResponseDto.Order;
 using ClassLibrary1.Interface;
 using ClassLibrary1.Interface.IServices;
+using ClassLibrary1.Mapper;
 using DataAccess.Entites;
 using DataAccess.Enum;
 
@@ -18,15 +20,16 @@ public class OrderService : IOrderService
         _unit = unit;
     }
 
-    public async Task<int> CreateOrderAsync(OrderCreationRequestDto dto,PaymentType type)
+    public async Task<int> CreateOrderAsync(OrderCreationRequestDto dto, PaymentType type)
     {
         var order = new Order()
         {
             OrderCode = Int32.Parse(StringUtils.GenerateRandomNumber(8)),
-            OrderDate = DateTime.Now,
+            OrderDate = DateTime.UtcNow,
             CustomerId = dto.CustomerId,
             Quantity = dto.Quantity,
-            Total = dto.Total
+            Total = dto.Total,
+            PaymentType = type
         };
 
         switch (type)
@@ -38,7 +41,7 @@ public class OrderService : IOrderService
                 order.OrderStatus = OrderStatus.Confirming;
                 break;
         }
-        
+
         var orderDetails = new List<OrderDetail>();
         foreach (var x in dto.Products)
         {
@@ -53,11 +56,12 @@ public class OrderService : IOrderService
         }
 
         await _unit.OrderDetailRepository.AddRangeAsync(orderDetails);
-        var result= await _unit.SaveChangeAsync();
+        var result = await _unit.SaveChangeAsync();
         if (result < 1)
         {
             throw new NotImplementException("Create order failed");
         }
+
         return order.Id;
     }
 
@@ -70,14 +74,15 @@ public class OrderService : IOrderService
 
     public async Task UpdateOrderStatus(int id, OrderStatus status)
     {
-        var order =await _unit.OrderRepository.GetByIdAsync(id)??
-                   throw new NotFoundException("OrderId "+id+" not found");
+        var order = await _unit.OrderRepository.GetByIdAsync(id) ??
+                    throw new NotFoundException("OrderId " + id + " not found");
         order.OrderStatus = status;
         _unit.OrderRepository.Update(order);
-        var result =await _unit.SaveChangeAsync();
+        var result = await _unit.SaveChangeAsync();
         if (result <= 0)
             throw new NotImplementException("Update order status failed");
     }
+
     public int GetIdMomoResponse(string id)
     {
         Regex regex = new Regex("-(\\d+)");
@@ -109,5 +114,18 @@ public class OrderService : IOrderService
         }
 
         return 3;
+    }
+
+    public async Task<List<OrderResponse>> GetOrders(OrderStatus status, int customerId)
+    {
+        var orders = await _unit.OrderRepository.GetOrdersByStatus(status, customerId);
+        return OrderMapper.OrdersToOrdersResponse(orders);
+    }
+
+    public async Task<OrderDetailsResponse> GetOrderDetails(int id)
+    {
+        var order = await _unit.OrderRepository.GetByIdAsync(id) ??
+                    throw new NotFoundException("OrderId " + id + " not found!");
+        return OrderMapper.OrdersToOrderDetailResponse(order);
     }
 }

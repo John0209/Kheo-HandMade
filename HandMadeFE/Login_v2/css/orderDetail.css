@@ -1,0 +1,98 @@
+.order-background{
+    border: 1px solid #DADADA;
+    background-color: #F4F4F4;
+    padding: 1% 2% 1% 2%;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    width: 100%;
+}
+#order-payment{
+    height: 8%;
+    display: flex;
+    
+}
+#order-payment p{
+    font-weight: bold;
+    padding-right: 15px;
+    color: #212121c4;
+}
+#order{
+    margin-left: 7%;
+}
+#order h3{
+    color: #1A9CB7;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 1%;
+}
+
+#payment{
+    display: flex;
+    margin-left: 36.5%;
+} 
+#payment img{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+#order-address{
+    height: 280px;
+    padding-left: 4%;
+    padding-top: 2%;
+}
+
+#address-contact{
+    display: flex;
+}
+#address-contact span{
+    margin-left: 11%;
+}
+#order-address h5{
+    font-size: 18px;
+    font-weight: bold;
+    color: #1A9CB7;
+}
+#address-infor{
+    display: flex;
+}
+#address-infor p{
+    margin-left: 5%;
+}
+#home{
+    width: 18%;
+    height: 18%;
+    background-color: #F57224;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+}
+#ship-fee{
+    width: 40%;
+    height: 34%;
+    border: 1px solid #1A9CB7;
+    padding: 10px;
+    border-radius: 5px;
+}
+#ship-fee i{
+    margin-right: 20px;
+    margin-top: 3px;
+    color: #1A9CB7;
+}
+.order-detail{
+    display: flex;
+    justify-content: space-between;
+}
+.order-detail span{
+    font-weight: bold;
+    color: #212121c4;
+}
+.order-detail h4{
+    font-weight: bold;
+    color: #F57224;
+    font-size: 20px;
+}
+#order-cancelBtn{
+    
+}

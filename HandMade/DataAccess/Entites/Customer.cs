@@ -15,4 +15,6 @@ public class Customer : BaseEntity
 
     [Range(6,8)] public int TokenCode { get; set; }
     public UserStatus Status { get; set; }
+
+    public virtual ICollection<Order> Orders { get; set; }= new List<Order>();
 }
