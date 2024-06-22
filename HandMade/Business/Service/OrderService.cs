@@ -14,10 +14,12 @@ namespace ClassLibrary1.Service;
 public class OrderService : IOrderService
 {
     private IUnitOfWork _unit;
+    private IProductService _product;
 
-    public OrderService(IUnitOfWork unit)
+    public OrderService(IUnitOfWork unit, IProductService product)
     {
         _unit = unit;
+        _product = product;
     }
 
     public async Task<int> CreateOrderAsync(OrderCreationRequestDto dto, PaymentType type)
@@ -116,9 +118,16 @@ public class OrderService : IOrderService
         return 3;
     }
 
-    public async Task<List<OrderResponse>> GetOrders(OrderStatus status, int customerId)
+    public async Task<List<OrderResponse>> GetOrders(OrderStatus? status, int customerId)
     {
         var orders = await _unit.OrderRepository.GetOrdersByStatus(status, customerId);
+        var orderDetails = orders.SelectMany(x => x.OrderDetails);
+
+        foreach (var z in orderDetails)
+        {
+            z.Product!.Picture = _product.GetProductPicture(z.Product.Id);
+        }
+
         return OrderMapper.OrdersToOrdersResponse(orders);
     }
 
@@ -126,6 +135,11 @@ public class OrderService : IOrderService
     {
         var order = await _unit.OrderRepository.GetByIdAsync(id) ??
                     throw new NotFoundException("OrderId " + id + " not found!");
+        foreach (var z in order.OrderDetails)
+        {
+            z.Product!.Picture = _product.GetProductPicture(z.Product.Id);
+        }
+
         return OrderMapper.OrdersToOrderDetailResponse(order);
     }
 }

@@ -126,106 +126,7 @@
 
     <div class="container-fluid">
         <div class="container">
-            <div id="order">
-                <h3>Chi tiết đơn hàng</h3>
-
-                <div id="order-infor">
-                    <div id="order-code">
-                        <div style="display: flex;">
-                            <i class="fa-solid fa-box"></i>
-                            <p>Mã đơn hàng: </p>
-                            <p id="code">12458760</p>
-                        </div>
-                        <div id="status">
-                            <span>Thành công</span>
-                        </div>
-                    </div>
-                    <hr id="order-hr">
-                    <div id="order-product">
-                        <img src="../images/candle.jpg" alt="">
-                        <div>
-                            <p>Tên sản phẩm</p>
-                            <a href="">Nến xinh Mã Lai</a>
-                        </div>
-                        <div>
-                            <p>Số lượng đã mua</p>
-                            <span>2</span>
-                        </div>
-                        <div id="price">
-                            <p>Giá sản phẩm</p>
-                            <span>100.000đ</span>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="order-background" id="order-payment">
-                    <div style="display: flex;">
-                        <p>Ngày đặt hàng: </p>
-                        <span>18/02/2024 20:05</span>
-                    </div>
-                    <div id="payment">
-                        <img src="../images/momo.png">
-                        <p>Thanh toán bằng ví Momo</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="order-background" id="order-address">
-                            <h5>Địa chỉ giao hàng</h5>
-                            <div id="address-contact">
-                                <p>Anh Vũ</p>
-                                <span>0397528860</span>
-                            </div>
-                            <div id="address-infor">
-                                <div id="home">NHÀ RIÊNG</div>
-                                <p>số 16 đường 4-4A, Xã Xuân Thới Thượng, Huyện Hóc Môn, Hồ Chí Minh</p>
-                            </div>
-                            <h5>Hình thức giao hàng</h5>
-                            <div id="ship-fee">
-                                <div style="display: flex;">
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    <div>
-                                        <p>10.000 đ</p>
-                                        <p>Giao hàng tiêu chuẩn</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="order-background" id="order-address">
-                            <h5>Thông tin đơn hàng</h5>
-                            <div class="order-detail">
-                                <p>Tên sản phẩm</p>
-                                <span>Nến xinh đẹp Cali</span>
-                            </div>
-                            <div class="order-detail">
-                                <p>Giá tiền </p>
-                                <span>100.000 đ</span>
-                            </div>
-                            <div class="order-detail">
-                                <p>Số lượng</p>
-                                <span>x2</span>
-                            </div>
-                            <div class="order-detail">
-                                <p>Phí vận chuyển</p>
-                                <span>10.000đ</span>
-                            </div>
-                            <hr>
-                            <div class="order-detail">
-                                <p>Tổng tiền</p>
-                                <h4>200.000 đ</h4>
-                            </div>
-                            <div id="order-cancelBtn">
-                                <button id="btnCancel">Hủy Đơn Hàng</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            <div id="order"></div>
         </div>
     </div>
 
@@ -309,6 +210,8 @@
             </div>
         </div>
     </footer>
+    <script src="../js/orderDetail.js"></script>
+    <script src="../js/header.js"></script>
 </body>
 
 </html>

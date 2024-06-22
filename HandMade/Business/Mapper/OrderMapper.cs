@@ -15,6 +15,8 @@ public static class OrderMapper
             Id = x.Id,
             OrderCode = x.OrderCode,
             Status = x.OrderStatus,
+            QuantityTotal = x.Quantity,
+            PriceTotal = x.Total,
             OrderDetails = ConvertToListOrderDetailsDto(x.OrderDetails.ToList())
         }).ToList();
     }
@@ -24,7 +26,8 @@ public static class OrderMapper
         {
             ProductName = x.Product!.ProductName,
             OrderQuantity = x.Quantity,
-            ProductPrice = x.Product!.Price
+            ProductPrice = x.Product!.Price,
+            ProductImage = x.Product!.Picture
         }).ToList();
     }
 

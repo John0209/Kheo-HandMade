@@ -28,15 +28,18 @@ public class ProductService : IProductService
         {
             x.Picture = _cloud.GetLinkImage(x.Id)??"";
         }
-
         return ProductMapper.ProductsToListProductResponseDto(products);
     }
 
+    public string GetProductPicture(int productId)
+    {
+       return _cloud.GetLinkImage(productId);
+    }
     public async Task<ProductResponseDto> GetProductByIdAsync(int id)
     {
         var product = await _unit.ProductRepository.GetByIdAsync(id) ??
                       throw new NotFoundException("Product not found");
-        product.Picture = _cloud.GetLinkImage(product.Id);
+        product.Picture = GetProductPicture(product.Id);
         return ProductMapper.ProductToProductResponseDto(product);
     }
 

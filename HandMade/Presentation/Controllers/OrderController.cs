@@ -61,7 +61,7 @@ public class OrderController : Controller
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<OrderResponse>>> GetOrders(int customerId,OrderStatus status)
+    public async Task<ActionResult<List<OrderResponse>>> GetOrders(int customerId,OrderStatus? status)
     {
         var result = await _orderService.GetOrders(status,customerId);
         return Ok(result);
