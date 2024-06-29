@@ -43,4 +43,21 @@ public static class OrderMapper
         OrderDetails = ConvertToListOrderDetailsDto(x.OrderDetails.ToList())
     };
 
+    public static OrderAdminResponse OrderToOrderAdminResponse(List<Order> dto) => new OrderAdminResponse()
+    {
+        TotalOrder = dto.Count,
+        Orders = ConvertToListOrderAdminDto(dto)
+    };
+
+    private static List<OrderAdminDto> ConvertToListOrderAdminDto(List<Order> dto)
+    {
+        return dto.Select(x => new OrderAdminDto()
+        {
+            Id = x.Id,
+            OrderCode = x.OrderCode,
+            Total = x.Total,
+            Status = x.OrderStatus,
+            CustomerName = x.Customer!.FullName
+        }).ToList();
+    }
 }

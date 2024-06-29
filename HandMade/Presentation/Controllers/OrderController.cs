@@ -72,4 +72,11 @@ public class OrderController : Controller
         var result = await _orderService.GetOrderDetails(id);
         return Ok(result);
     }
+
+    [HttpGet("admin")]
+    public async Task<ActionResult<OrderAdminResponse>> AdminGetOrders(OrderStatus status)
+    {
+        var result = await _orderService.AdminGetOrders(status);
+        return Ok(result);
+    }
 }

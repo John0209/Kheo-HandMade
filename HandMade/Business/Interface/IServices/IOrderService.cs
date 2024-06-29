@@ -14,4 +14,5 @@ public interface IOrderService
     public Task<int> CreateOrderTestAsync(OrderCreationRequestDto dto);
     public Task<List<OrderResponse>> GetOrders(OrderStatus? status,int customerId);
     public Task<OrderDetailsResponse> GetOrderDetails(int id);
+    public  Task<OrderAdminResponse> AdminGetOrders(OrderStatus status);
 }

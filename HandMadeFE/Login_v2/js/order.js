@@ -1,8 +1,14 @@
+
 document.addEventListener("DOMContentLoaded", async function () {
     ORDER_STATUS = 'All';
-    await LoadOrders();
+    if (account.email === 'admin@gmail.com') {
+        await AdminLoadOrders();
+    } else {
+        await LoadOrders();
+    }
 });
-
+let account = JSON.parse(sessionStorage.getItem('account'));
+let html = '';
 let ORDER_STATUS = ''
 const COLOR_STATUS = {
     Processing: {
@@ -30,24 +36,24 @@ var color_status = '';
 var name_status = '';
 
 async function LoadOrders() {
-    let html = '';
     let product = '';
     let orders = document.getElementById('orders');
     const data = await getOrdersAPI();
 
-    if(data.length===0){
-        html=`<div id="no-order">
+    if (data.length === 0) {
+        html = `<div id="no-order">
                         <h5>Tiếc quá, bạn chưa có đơn hàng nào</h5>
                        <img src="../images/cry.png" alt="">
                     </div>`;
-    }else{
+    } else {
+        html='';
         data.forEach(x => {
             x.orderDetails.forEach(z => {
-    
+
                 const status = x.status;
                 color_status = COLOR_STATUS[status].color;
                 name_status = COLOR_STATUS[status].name;
-    
+
                 product += `
                  <div id="order-product">
                                             <img src="${z.productImage}" alt="">
@@ -57,7 +63,7 @@ async function LoadOrders() {
                                             </div>
                                         </div>`
             })
-    
+
             html += `
              <div id="order-infor">
                             <div id="order-code">
@@ -99,13 +105,41 @@ async function LoadOrders() {
                             </div>
                         </div>
                 `
-                product='';
+            product = '';
         });
     }
-   
+
     orders.innerHTML = html;
 }
+async function AdminLoadOrders() {
+    var admin_orders = document.getElementById('admin_orders');
+    var total_order = document.getElementById('total_order');
+    const data = await adminGetOrdersAPI();
+    total_order.innerHTML = ` <p>Tổng Số Đơn Hàng</p>
+                            <span>${data.totalOrder}</span>`;
+    if (data.orders.length === 0) {
+        html = `<div id="no-order">
+                        <h5>Chưa có đơn hàng nào ở trạng thái này</h5>
+                       <img src="../images/cry.png" alt="">
+                    </div>`;
+    } else {
+        html = '';
+        data.orders.forEach(x => {
+            const status = x.status;
+            color_status = COLOR_STATUS[status].color;
+            name_status = COLOR_STATUS[status].name;
 
+            html += `<div id="order_information">
+                        <h5>${x.customerName}</h5>
+                            <p>${x.orderCode}</p>
+                            <h4>${formatCurrency(x.total)}</h4>
+                            <span style="color: ${color_status};">${name_status}</span>
+                            <button id="btnDetail"> Xem chi tiết</button>
+                             </div>`
+        });
+    }
+    admin_orders.innerHTML = html;
+}
 function formatCurrency(price) {
     return new Intl.NumberFormat('vi-VN', {
         style: 'currency',
@@ -114,57 +148,112 @@ function formatCurrency(price) {
 }
 
 async function getOrdersAPI() {
-    const account=JSON.parse(sessionStorage.getItem('account'));
     var response = '';
     switch (ORDER_STATUS) {
         case 'All':
             response = await fetch(`https://handmade.somee.com/api/v1/orders?customerId=${account.customerId}`);
             break;
         default:
-            console.log(ORDER_STATUS)
             response = await fetch(`https://handmade.somee.com/api/v1/orders?customerId=${account.customerId}&status=${ORDER_STATUS}`);
             break;
     }
     return await response.json();
 }
-
+async function adminGetOrdersAPI() {
+    var response = '';
+    switch (ORDER_STATUS) {
+        case 'All':
+            response = await fetch(`https://handmade.somee.com/api/v1/orders/admin?status=Processing`);
+            break;
+        default:
+            response = await fetch(`https://handmade.somee.com/api/v1/orders/admin?status=${ORDER_STATUS}`);
+            break;
+    }
+    return await response.json();
+}
 const btnSelect = document.querySelectorAll('button[name="btnSelect"]');
 btnSelect.forEach(btn => {
     btn.addEventListener('click', async e => {
         changeBtnColor(btn);
         getOrderStatus(btn);
-        await LoadOrders();
+        if (account.email === 'admin@gmail.com') {
+            changeLineStatus(btn);
+            await AdminLoadOrders();
+        } else {
+            await LoadOrders();
+        }
     });
 });
 
 function getOrderStatus(btn) {
     switch (btn.id) {
-        case 'btnAll':
+        case ORDER_STATUS_BTN.ALL:
             ORDER_STATUS = 'All';
             break;
-        case 'btnProcess':
+        case ORDER_STATUS_BTN.PROCESS:
             ORDER_STATUS = 'Processing';
             break;
-        case 'btnConfirm':
+        case ORDER_STATUS_BTN.CONFIRM:
             ORDER_STATUS = 'Confirming';
             break;
-        case 'btnDelivery':
+        case ORDER_STATUS_BTN.DELIVERY:
             ORDER_STATUS = 'Delivering';
             break;
-        case 'btnSuccess':
+        case ORDER_STATUS_BTN.SUCCESS:
             ORDER_STATUS = 'Success';
             break;
-        case 'btnFail':
+        case ORDER_STATUS_BTN.FAILED:
             ORDER_STATUS = 'Failed';
             break;
     }
 }
+
+const lineStatus = document.querySelectorAll('div[name="lineStatus"]');
 
 function changeBtnColor(btn) {
     btnSelect.forEach(x => {
         x.style.color = "#212121cb";
         x.style.fontWeight = "initial";
     });
-    btn.style.color = "#F57224";
+    btn.style.color = "#1A9CB7";
     btn.style.fontWeight = "bold";
 }
+
+const ORDER_STATUS_BTN = {
+    ALL: 'btnAll',
+    PROCESS: 'btnProcess',
+    CONFIRM: 'btnConfirm',
+    DELIVERY: 'btnDelivery',
+    SUCCESS: 'btnSuccess',
+    FAILED: 'btnFail',
+}
+function changeLineStatus(btn) {
+    lineStatus.forEach(x => {
+        x.className = '';
+    });
+    var line = '';
+
+    switch (btn.id) {
+        case ORDER_STATUS_BTN.PROCESS:
+            line = document.getElementById('process');
+            line.className = 'lineProcess';
+            break;
+        case ORDER_STATUS_BTN.CONFIRM:
+            line = document.getElementById('confirm');
+            line.className = 'lineConfirm';
+            break;
+        case ORDER_STATUS_BTN.DELIVERY:
+            line = document.getElementById('delivery');
+            line.className = 'lineDelivery';
+            break;
+        case ORDER_STATUS_BTN.SUCCESS:
+            line = document.getElementById('success');
+            line.className = 'lineSuccess';
+            break;
+        case ORDER_STATUS_BTN.FAILED:
+            line = document.getElementById('fail');
+            line.className = 'lineFail';
+            break;
+    }
+}
+

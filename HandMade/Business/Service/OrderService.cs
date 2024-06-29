@@ -142,4 +142,10 @@ public class OrderService : IOrderService
 
         return OrderMapper.OrdersToOrderDetailResponse(order);
     }
+
+    public async Task<OrderAdminResponse> AdminGetOrders(OrderStatus status)
+    {
+        var orders = await _unit.OrderRepository.AdminGetOrder(status);
+        return OrderMapper.OrderToOrderAdminResponse(orders);
+    }
 }

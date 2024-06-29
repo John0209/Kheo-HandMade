@@ -1,0 +1,203 @@
+.sidebar-wrapper {
+    height: 100vh;
+    width: 100%;
+    position: sticky;
+    background-color: #7F7C7C;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+}
+
+.sidebar-wrapper h1 {
+    margin: 10% 0 15% 0;
+    font-weight: bold;
+    font-size: 35px;
+    text-align: center;
+}
+
+.sidebar-wrapper h5 {
+    margin: 0 0 10% 6%;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.sidebar-menu {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.sidebar-menu i {
+    width: 20px;
+    height: 20px;
+    margin: 10% 10% 10% 20%;
+    font-size: 20px;
+}
+
+.sidebar-menu p {
+    height: 20px;
+    display: inline-block;
+    margin-top: 5.5%;
+}
+
+.content-wrapper {
+    height: 100vh;
+    width: 100%;
+    background-image: url(../images/admin_order.png);
+    background-size: cover;
+}
+#line{
+    width: 50px;
+    height: 2px;
+    background-color: #FF8A00;
+}
+.sidebar-select {
+    width: 100%;
+    height: 6%;
+    background-color: white;
+    border-radius: 15px;
+    color: #FF8A00;
+    font-weight: bold;
+    border: none;
+    padding-top: -20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnMenu {
+    width: 100%;
+    border: none;
+    background-color: unset;
+    color: white;
+}
+
+#title {
+    display: flex;
+    padding: 2% 0 0 8%;
+    color: #212121cc;
+}
+
+#title h5 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#title i {
+    font-size: 20px;
+    margin: 2px 0 0 15px;
+    color: #FF8A00;
+}
+
+.content {
+    width: 1050px;
+    height: 600px;
+    background-color: white;
+    margin: 3% 0 0 8%;
+    border-radius: 15px;
+}
+
+.lineProcess{
+    width: 170px;
+    height: 3.5px;
+    background-color: #1A9CB7;
+    margin: -1.7% 0 0 5%;
+    
+}
+.lineConfirm{
+    width: 160px;
+    height: 3.5px;
+    background-color: #1A9CB7;
+    margin: -1.7% 0 0 23.5%;
+}
+.lineDelivery{
+    width: 190px;
+    height: 3.5px;
+    background-color: #1A9CB7;
+    margin: -1.7% 0 0 40.5%;
+}
+.lineSuccess{
+    width: 180px;
+    height: 3.5px;
+    background-color: #1A9CB7;
+    margin: -1.7% 0 0 61%;
+}
+.lineFail{
+    width: 150px;
+    height: 3.5px;
+    background-color: #1A9CB7;
+    margin: -1.7% 0 0 80.5%;
+}
+#total_order{
+    display: flex;
+    width: 220px;
+    height: 35px;
+    border: 2px solid #F25B58;
+    margin-left: 5%;
+    text-align: center;
+    border-radius: 5px;
+    padding: 2px 0 0 15px;
+    font-weight: bold;
+    color: #F15C58;
+}
+#total_order span{
+    padding-left: 15px;
+    font-size: 20px;
+    margin-top: -3.5px;
+}
+#menu-top{
+    display:  flex;
+    width: 90%;
+    height: 40px;
+    border: none;
+    background-color: #1A9CB7;
+    border-radius: 5px;
+    margin: 15px 0 0 5%;
+    color: white;
+    font-weight: bold;
+    justify-content: space-evenly;
+    font-size: 15px;
+    padding-top: 7px;
+}
+#admin_orders{
+    overflow-y: auto;
+    width: 1050px;
+    height: 420px;
+    border-radius: 15px;
+}
+#order_information{
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    height: 70px;
+    border: 1px solid #D4D4D4;
+    color: #212121d8;
+    margin: 15px 0 0 5%;
+    border-radius: 5px;
+    padding-top: 1.8%;
+}
+#order_information h5{
+    font-size: 17px;
+    margin-left: -3%;
+}
+#order_information h4{
+    font-size: 17px;
+    margin-right: -1%;
+}
+#order_information span{
+    margin-right: -4%;
+    font-weight: bold;
+    color: #F15C58;
+}
+#btnDetail{
+    width: 120px;
+    height: 30px;
+    border: none;
+    background-color: #FFA63D;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 15px;
+    margin-right: -4%;
+}
+

@@ -26,6 +26,7 @@ public class OrderRepository : BaseRepository<Order>, IOrderRepository
         {
             query = query.Where(x => x.OrderStatus == status);
         }
+
         return await query.ToListAsync();
     }
 
@@ -33,5 +34,10 @@ public class OrderRepository : BaseRepository<Order>, IOrderRepository
     {
         return DbSet.Include(x => x.OrderDetails).ThenInclude(x => x.Product)
             .FirstOrDefaultAsync(x => x.Id == id);
+    }
+
+    public Task<List<Order>> AdminGetOrder(OrderStatus? status)
+    {
+        return DbSet.Include(x=>x.Customer).Where(x => x.OrderStatus == status).ToListAsync();
     }
 }

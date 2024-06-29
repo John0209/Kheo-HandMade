@@ -104,8 +104,13 @@
             const status = response.status;
             if (status >= 200 && status < 300) {
                 const data = await response.json();
-                sessionStorage.setItem('account',JSON.stringify(data));
-                window.location.href = '/Login_v2/pages/homepage.html';
+                sessionStorage.setItem('account', JSON.stringify(data));
+                if (data.email === 'admin@gmail.com') {
+                    window.location.href = '/Login_v2/page_admin/admin_dashboard.html'
+                } else {
+                    window.location.href = '/Login_v2/pages/homepage.html';
+                }
+
             } else {
                 alert('Nhập sai email, mật khẩu hoặc tài khoản chưa được xác thực');
             }
