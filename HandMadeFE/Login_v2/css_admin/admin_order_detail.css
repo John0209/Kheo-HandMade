@@ -1,0 +1,31 @@
+.background{
+    width: 90%;
+    background-color: #F6F2ED;
+    padding: 8px 20px;
+}
+.order-customer{
+    height: 40px;
+    margin: 2% 0 0 8%;
+    display: flex;
+    justify-content: space-between;
+}
+.order-customer i{
+    font-size: 20px;
+    color: #FF8A00;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.order-information{
+    height: 170px;
+    margin: 1% 0 0 8%; 
+}
+.order-background-admin{
+    margin: 1% 0 0 8%;
+}
+.order-address{
+    margin: 2% 0 0 16.5%;
+}
+.order-infor-detail{
+    margin: 2% 0 0 6%;
+}
+

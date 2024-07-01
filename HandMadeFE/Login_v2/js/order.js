@@ -134,12 +134,15 @@ async function AdminLoadOrders() {
                             <p>${x.orderCode}</p>
                             <h4>${formatCurrency(x.total)}</h4>
                             <span style="color: ${color_status};">${name_status}</span>
-                            <button id="btnDetail"> Xem chi tiết</button>
+                            <div id="viewDetail">
+                            <a href="../page_admin/admin_orderDetail.html"> Xem chi tiết</a>
+                            </div>
                              </div>`
         });
     }
     admin_orders.innerHTML = html;
 }
+
 function formatCurrency(price) {
     return new Intl.NumberFormat('vi-VN', {
         style: 'currency',
