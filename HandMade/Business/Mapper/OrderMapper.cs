@@ -40,6 +40,7 @@ public static class OrderMapper
         PaymentType = x.PaymentType,
         QuantityTotal = x.Quantity,
         PriceTotal = x.Total,
+        CustomerName = x.Customer?.FullName,
         OrderDetails = ConvertToListOrderDetailsDto(x.OrderDetails.ToList())
     };
 

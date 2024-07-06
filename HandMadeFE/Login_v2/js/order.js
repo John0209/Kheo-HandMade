@@ -124,18 +124,18 @@ async function AdminLoadOrders() {
                     </div>`;
     } else {
         html = '';
+       
         data.orders.forEach(x => {
             const status = x.status;
             color_status = COLOR_STATUS[status].color;
             name_status = COLOR_STATUS[status].name;
-
             html += `<div id="order_information">
                         <h5>${x.customerName}</h5>
                             <p>${x.orderCode}</p>
                             <h4>${formatCurrency(x.total)}</h4>
                             <span style="color: ${color_status};">${name_status}</span>
                             <div id="viewDetail">
-                            <a href="../page_admin/admin_orderDetail.html"> Xem chi tiết</a>
+                            <a href="../page_admin/admin_orderDetail.html?id=${x.id}"> Xem chi tiết</a>
                             </div>
                              </div>`
         });

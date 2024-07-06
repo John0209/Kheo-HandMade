@@ -33,6 +33,7 @@ public class OrderRepository : BaseRepository<Order>, IOrderRepository
     public override Task<Order?> GetByIdAsync(int id, bool disableTracking = false)
     {
         return DbSet.Include(x => x.OrderDetails).ThenInclude(x => x.Product)
+            .Include(x=> x.Customer)
             .FirstOrDefaultAsync(x => x.Id == id);
     }
 

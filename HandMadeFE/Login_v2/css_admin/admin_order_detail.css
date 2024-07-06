@@ -9,6 +9,12 @@
     display: flex;
     justify-content: space-between;
 }
+.order-customer p{
+    padding-left: 10px;
+}
+.order-customer span{
+    margin-left: 11px;
+}
 .order-customer i{
     font-size: 20px;
     color: #FF8A00;
@@ -16,7 +22,7 @@
     margin-right: 10px;
 }
 .order-information{
-    height: 170px;
+    height: 10%;
     margin: 1% 0 0 8%; 
 }
 .order-background-admin{

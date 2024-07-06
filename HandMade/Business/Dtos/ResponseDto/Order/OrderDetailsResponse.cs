@@ -11,5 +11,6 @@ public class OrderDetailsResponse
     public OrderStatus Status { get; set; }
     public string? OrderDate { get; set; }
     public PaymentType PaymentType { get; set; }
+    public string? CustomerName { get; set; }
     public List<OrderDetailsDto> OrderDetails{ get; set; } = new List<OrderDetailsDto>();
 }
