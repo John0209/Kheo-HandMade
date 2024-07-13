@@ -1,23 +1,23 @@
 const COLOR_STATUS = {
     Processing: {
         color: '#988e8ee1',
-        name: 'Đợi thanh toán'
+        name: 'Đợi Thanh Toán'
     },
     Confirming: {
         color: '#1A9CB7',
-        name: 'Đợi xác nhận'
+        name: 'Đợi Xác Nhận'
     },
     Delivering: {
         color: '#FF8A00',
-        name: 'Đang giao'
+        name: 'Đang Giao Hàng'
     },
     Success: {
         color: '#6DCE63',
-        name: 'Thành công'
+        name: 'Giao Thành Công'
     },
     Failed: {
         color: '#F11616',
-        name: 'Thất bại'
+        name: 'Đơn Đã Hủy'
     }
 };
 const PAYMENT_TYPE = {
@@ -39,10 +39,10 @@ let account = JSON.parse(sessionStorage.getItem('account'));
 let html = '';
 let product = '';
 let product_name = '';
+let product_status_div = '';
 
 
-
-async function LoadOrders(data,order) {
+async function LoadOrders(data, order) {
     data.orderDetails.forEach(x => {
         product += ` <div id="order-product">
                             <img src="${x.productImage}" alt="">
@@ -62,6 +62,8 @@ async function LoadOrders(data,order) {
                         </div>`
         product_name += (x.productName + ". ");
     });
+
+    getBtnProduct(data);
 
     getColorAndPayment(data);
 
@@ -141,16 +143,14 @@ async function LoadOrders(data,order) {
                                 <p>Tổng cộng (đã cộng trừ tất cả phí)</p>
                                 <h4>${formatCurrency(data.priceTotal)}</h4>
                             </div>
-                            <div id="order-cancelBtn">
-                                <button id="btnCancel">HỦY ĐƠN HÀNG</button>
-                            </div>
+                            ${product_status_div}
                         </div>
                     </div>
                 </div>`
     order.innerHTML = html;
 }
 
-async function AdminLoadOrders(data,order) {
+async function AdminLoadOrders(data, order) {
     data.orderDetails.forEach(x => {
         product += ` <div id="order-product">
                             <img src="${x.productImage}" alt="">
@@ -170,6 +170,8 @@ async function AdminLoadOrders(data,order) {
                         </div>`
         product_name += (x.productName + ". ");
     });
+
+    getBtnProduct(data);
 
     getColorAndPayment(data);
 
@@ -266,9 +268,8 @@ async function AdminLoadOrders(data,order) {
                                 <p>Tổng cộng (đã cộng trừ tất cả phí)</p>
                                 <h4>${formatCurrency(data.priceTotal)}</h4>
                             </div>
-                            <div id="order-cancelBtn">
-                                <button id="btnCancel">HỦY ĐƠN HÀNG</button>
-                            </div>
+
+                            ${product_status_div}
                         </div>
                     </div>
                 </div>`
@@ -279,15 +280,15 @@ async function AdminLoadOrders(data,order) {
 document.addEventListener("DOMContentLoaded", async function () {
 
     var data = await LoadOrderDetails();
-    var order ='';
-    html ='';
+    var order = '';
+    html = '';
 
     if (account.email === 'admin@gmail.com') {
         order = document.getElementById('order-details');
-        await AdminLoadOrders(data,order);
+        await AdminLoadOrders(data, order);
     } else {
         order = document.getElementById('order');
-        await LoadOrders(data,order);
+        await LoadOrders(data, order);
     }
 })
 
@@ -310,4 +311,84 @@ function getColorAndPayment(data) {
     status_name = COLOR_STATUS[data.status].name;
     title_type = PAYMENT_TYPE[data.paymentType].title;
     image_type = PAYMENT_TYPE[data.paymentType].image;
+}
+
+function getBtnProduct(data) {
+    if (account.email === 'admin@gmail.com') {
+        switch (data.status) {
+            case 'Confirming':
+
+                product_status_div += `  <div id="order-cancelBtn">
+                            <button id="${data.id}-Delivering" class="btnDelivery btnEffect">VẬN CHUYỂN ĐƠN HÀNG</button>
+                        </div>
+            <div id="order-cancelBtn">
+                            <button id="${data.id}-Failed" class="btnCancel btnEffect">HỦY ĐƠN HÀNG</button>
+                        </div>`
+                break;
+            case 'Delivering':
+                product_status_div += `  <div id="order-cancelBtn">
+                                <button id="${data.id}-Success" class="btnSuccess btnEffect">GIAO THÀNH CÔNG</button>
+                            </div>
+                <div id="order-cancelBtn">
+                                <button id="${data.id}-Failed" class="btnFailed btnEffect">GIAO THẤT BẠI</button>
+                            </div>`
+                break;
+            default:
+                product_status_div = '';
+        }
+    }
+    else {
+        switch (data.status) {
+            case 'Confirming':
+                product_status_div += ` 
+            <div id="order-cancelBtn">
+                            <button id="${data.id}-Failed" class="btnCancel btnEffect" >HỦY ĐƠN HÀNG</button>
+                        </div>`
+                break;
+            case 'Processing':
+                product_status_div += `  
+                <div id="order-cancelBtn">
+                                <button id="${data.id}-Payment" class="btnPayment btnEffect" >THANH TOÁN ĐƠN HÀNG</button>
+                            </div>`
+                break;
+            default:
+                product_status_div = '';
+        }
+    }
+}
+
+setTimeout(() => {
+    const btnProduct = document.querySelectorAll('.btnEffect');
+    btnProduct.forEach(x => {
+        x.addEventListener('click', async () => {
+            console.log(x.id)
+            await callAPIChangeStatus(x.id)
+        });
+    })
+}, 1000);
+
+async function callAPIChangeStatus(btn) {
+    const part = btn.split('-');
+    const id = part[0];
+    const status = part[1];
+    var response = '';
+    switch (status) {
+        case 'Payment':
+            response = await fetch(`https://handmade.somee.com/api/v1/orders/momo/${id}`, {
+                method: 'POST'
+            });
+            const data = await response.json();
+            if (response.status >= 200 && response.status < 300) {
+                location.href = data.link;
+                break;
+            }
+            break;
+        default:
+            response = await fetch(`https://handmade.somee.com/api/v1/orders?code=${id}&status=${status}`,{
+                method:'PATCH'
+            });
+            alert('Yêu cầu đã được chấp nhận')
+            location.reload();
+    }
+
 }

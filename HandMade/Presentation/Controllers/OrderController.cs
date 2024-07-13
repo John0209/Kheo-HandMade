@@ -51,6 +51,12 @@ public class OrderController : Controller
         });
     }
 
+    [HttpPatch]
+    public async Task<IActionResult> UpdateOrderAsync(int code, OrderStatus status)
+    {
+        await _orderService.UpdateOrderStatus(code, status);
+        return Ok("Update order successful");
+    }
     [HttpGet]
     [Route("momo-return")]
     public async Task<IActionResult> MomoReturnAsync([FromQuery] MomoResultRequest dto)

@@ -13,23 +13,23 @@ let ORDER_STATUS = ''
 const COLOR_STATUS = {
     Processing: {
         color: '#988e8ee1',
-        name: 'Đợi thanh toán'
+        name: 'Đợi Thanh Toán'
     },
     Confirming: {
         color: '#1A9CB7',
-        name: 'Đợi xác nhận'
+        name: 'Đợi Xác Nhận'
     },
     Delivering: {
         color: '#FF8A00',
-        name: 'Đang giao'
+        name: 'Đang Giao Hàng'
     },
     Success: {
         color: '#6DCE63',
-        name: 'Thành công'
+        name: 'Giao Thành Công'
     },
     Failed: {
         color: '#F11616',
-        name: 'Thất bại'
+        name: 'Đơn Đã Hủy'
     }
 };
 var color_status = '';

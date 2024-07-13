@@ -70,7 +70,7 @@
     border-radius: 5px;
 }
 #ship-fee{
-    width: 40%;
+    width: 55%;
     height: 30%;
     border: 1px solid #1A9CB7;
     padding: 10px;
@@ -95,13 +95,27 @@
     color: #F57224;
     font-size: 20px;
 }
-#btnCancel{
+.btnEffect{
     width: 100%;
     height: 40px;
     text-align: center;
-    background-color: #F11616;
     border: none;
     color: white;
     font-weight: bold;
-
+    margin-bottom: 10px;
+}
+.btnCancel{
+    background-color: #F11616;
+}
+.btnDelivery{
+    background-color: #FF8A00;
+}
+.btnSuccess{
+    background-color: #6DCE63;
+}
+.btnFailed{
+    background-color: #988e8ee1;
+}
+.btnPayment{
+    background-color: #1A9CB7;
 }
