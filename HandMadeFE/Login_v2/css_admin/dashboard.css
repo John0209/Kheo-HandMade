@@ -1,0 +1,74 @@
+.total_order{
+    width: 1050px;
+    height: 140px;
+    background-color: white;
+    margin: 3% 0 0 8%;
+    border-radius: 15px;
+}
+.title_option{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.title_option h5{
+    color: #1A9CB7;
+    font-weight: bold;
+}
+.title_option button{
+    color: #7F7C7C;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+}
+.border_Order{
+    width: 150px;
+    height: 30px;
+    background-color: #7F7C7C;
+    border-radius: 10px;
+    text-align: center;
+}
+.border_Order button{
+    color: white;
+}
+.total_circle{
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+#total_number{
+    margin-left: 5.5%;
+    background-color: #FD8569;
+}   
+#success_number{
+    margin-left: 9%;
+    background-color: #09c953;
+}
+#fail_number{
+    margin-left: 7.5%;
+    background-color: #F15C58;
+}
+#delivery_number{
+    margin-left: 8.5%;
+    background-color: #FFA63D;
+}
+#confirm_number{
+    margin-left: 9%;
+    background-color: #1A9CB7;
+}
+#process_number{
+    margin-left: 7.5%;
+    background-color: #7F7C7C;
+}
+#order_icon{
+    color:#FD8569 ;
+    font-size: 40px;
+    padding: 1% 0 0 3%;
+}
+
+

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="../css_admin/admin_orders.css">
+    <link rel="stylesheet" href="../css_admin/dashboard.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <!--===============================================================================================-->
@@ -56,8 +57,48 @@
                         <i class="fa-solid fa-chart-line"></i>
                     </div>
 
-                    <div class="content">
-                        <h2 style="padding: 10%; color: red; font-weight: bold;">Tính Năng Đang Phát Triển</h2>
+                    <div class="total_order">
+                        <div class="title_option">
+                            <h5>TỔNG SỐ ĐƠN HÀNG</h5>
+                            <div id="success" name="border_Status">
+                                <button name="btnSelect" id="btnSuccess">Đơn Thành Công</button>
+                            </div>
+                            <div id="fail" name="border_Status">
+                                <button name="btnSelect" id="btnFail">Đơn Thất Bại</button>
+                            </div>
+                            <div id="delivery" name="border_Status">
+                                <button name="btnSelect" id="btnDelivery">Đang Vận Chuyển</button>
+                            </div>
+                            <div id="confirm" name="border_Status">
+                                <button name="btnSelect" id="btnConfirm">Đợi Xác Nhận</button>
+                            </div>
+                            <div id="process" name="border_Status">
+                                <button name="btnSelect" id="btnProcess">Đợi Thanh Toán</button>
+                            </div>
+                        </div>
+
+                        <div style="display: flex;">
+                                <i id="order_icon" class="fa-solid fa-box-open"></i>
+                                
+                            <div id="total_number" class="total_circle">
+                                <h4>20</h4>
+                            </div>
+                            <div id="success_number" class="total_circle">
+                                <h4>20</h4>
+                            </div>
+                            <div id="fail_number" class="total_circle">
+                                <h4>20</h4>
+                            </div>
+                            <div id="delivery_number" class="total_circle">
+                                <h4>20</h4>
+                            </div>
+                            <div id="confirm_number" class="total_circle">
+                                <h4>20</h4>
+                            </div>
+                            <div id="process_number" class="total_circle">
+                                <h4>20</h4>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
