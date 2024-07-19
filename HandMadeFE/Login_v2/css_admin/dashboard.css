@@ -70,5 +70,127 @@
     font-size: 40px;
     padding: 1% 0 0 3%;
 }
+.total_product{
+    width: 85%;
+    height: 300px;
+    background-color: white;
+    margin: 5% 0 0 14%;
+    border-radius: 15px;
+}
+.total_money{
+    width: 80%;
+    height: 300px;
+    background-color: white;
+    margin: 7% 0 0 0;
+    border-radius: 15px;
+}
+.title_product{
+    display: flex;
+    padding-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.title_product h5{
+    color: #1A9CB7;
+    font-weight: bold;
+    margin-left: 3%;
+}
+.title_product h6{
+    color: #F15C58;
+    font-weight: bold;
+    margin-left: 30%;
+}
+.product_data_number{
+    display: flex;
+    padding: 3% 0 0 20px;
+    width: 300px;
+}
+#category_data{
+    padding: 0 0 0 18%;
+    font-weight: bold;
+    color: #7F7C7C;
+    font-size: 18px;
+}
+#category_data i{
+    margin-right: 20px;
+    color: #FF8A00;
+}
+.total_circle_product{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    margin-left: 1%;
 
+}
+#order_icon_product{
+    color:#FD8569 ;
+    font-size: 40px;
+    padding: 1% 13% 0 4%;
+}
+.total_money{
+    padding: 20px 0 0 3%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.total_money h5{
+    color: #1A9CB7;
+    font-weight: bold;
+}
+.total_money span{
+    color: #7F7C7C;
+    font-weight: bold;
 
+}
+.total_money h4{
+    color: #F25B58;
+    font-weight: bold;
+    padding-top: 10px;
+
+}
+
+.total_money button{
+   border: none;
+   background-color: #FFA63D;
+   border-radius: 5px;
+   color:white ;
+   width: 80px;
+   height: 30px;
+   padding-bottom: 10px;
+}
+.total_money p{
+    color: #7F7C7C;
+    padding-left: 20px;
+}
+#selled{
+    display: flex;
+    font-size: 18px;
+    padding-left: 3%;
+    
+}
+#selled p{
+    font-weight: bold;
+    color: #E53E5C;
+}
+#selled span{
+    font-weight: bold;
+    color: #FF8A00;
+    margin-left: 30px;
+}
+
+#inventory{
+    display: flex;
+    font-size: 18px;
+    padding-left: 3%;
+}
+#inventory p{
+    font-weight: bold;
+    color: #E53E5C;
+}
+#inventory span{
+    font-weight: bold;
+    color: black;
+    margin-left: 20px;
+}
