@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Login V2</title>
+	<title>Change password</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
@@ -24,71 +24,60 @@
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/util.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<!--===============================================================================================-->
 </head>
 
 <body>
 
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form" id="loginForm">
-					<span class="login100-form-title p-b-26">
-						HandMade
-					</span>
-					<span class="login100-form-title p-b-48">
-						<img src="images/kheo.png" id="kheo-logo">
-					</span>
-
-					<div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-						<input class="input100" type="text" id="email">
-						<span class="focus-input100" data-placeholder="Email"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<span class="btn-show-pass">
-							<i class="zmdi zmdi-eye"></i>
-						</span>
-						<input class="input100" type="password" id="pass">
-						<span class="focus-input100" data-placeholder="Mật khẩu"></span>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" id="btnLogin">
-								ĐĂNG NHẬP
-							</button>
-						</div>
-						<button id="btnForgot">
-							Quên mật khẩu
-						</button>
-					</div>
-
-					<div id="popup" class="popup">
-						<div class="popup-content">
-							<span class="close">&times;</span>
-							<input type="email" id="emailPopup" placeholder="Nhập email của bạn">
-							<button id="sendPassword">Send New Password</button>
-						</div>
-					</div>
-
-					<div class="text-center p-t-115">
-						<span class="txt1">
-							Bạn chưa có tài khoản?
-						</span>
-
-						<a class="txt2" href="../Login_v2/register.html">
-							Đăng ký ngay
-						</a>
-					</div>
-					
-				</form>
-			</div>
-		</div>
-	</div>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" id="loginForm">
+                    <span class="login100-form-title p-b-26">
+                        HandMade
+                    </span>
+                    <span class="login100-form-title p-b-48">
+                        <img src="../images/kheo.png" id="kheo-logo">
+                    </span>
+    
+                    <div class="wrap-input100 validate-input" data-validate="Enter old password">
+                        <input class="input100" type="password" id="oldpassword">
+                        <span class="focus-input100" data-placeholder="Mật khẩu cũ"></span>
+                    </div>
+    
+                    <div class="wrap-input100 validate-input" data-validate="Enter new password">
+                        <span class="btn-show-pass">
+                            <i class="zmdi zmdi-eye"></i>
+                        </span>
+                        <input class="input100" type="password" id="newPass">
+                        <span class="focus-input100" data-placeholder="Mật khẩu mới"></span>
+                    </div>
+    
+                    <!-- Trường xác nhận mật khẩu -->
+                    <div class="wrap-input100 validate-input" data-validate="Confirm password">
+                        <span class="btn-show-pass">
+                            <i class="zmdi zmdi-eye"></i>
+                        </span>
+                        <input class="input100" type="password" id="confirmPass">
+                        <span class="focus-input100" data-placeholder="Xác nhận mật khẩu"></span>
+                    </div>
+    
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" id="btnLogin">
+                                Đổi mật khẩu
+                            </button>
+                        </div>
+                    </div>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+    
 
 
 	<div id="dropDownSelect1"></div>
@@ -103,7 +92,7 @@
 	<script src="vendor/daterangepicker/moment.min.js"></script>
 	<script src="vendor/daterangepicker/daterangepicker.js"></script>
 	<script src="vendor/countdowntime/countdowntime.js"></script>
-	<script src="js/main.js"></script>
+	<script src="../js/changePass.js"></script>
 
 </body>
 

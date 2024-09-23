@@ -543,7 +543,7 @@ iframe {
 
 #kheo-logo {
   width: 280px;
-  height: 100px;
+  height: auto;
 }
 
 input[type="date"]::placeholder {
@@ -585,3 +585,57 @@ input[type="date"]::placeholder {
   border-radius:10px;
   font-weight: bolder;
 }
+
+#btnForgot {
+  display: block;
+  margin: 20px auto; /* Adjust the margin as needed */
+  text-align: center;
+}
+
+#btnForgot:hover {
+  text-decoration: underline;
+}
+
+/* Popup hiển thị ở giữa màn hình */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 20%;
+  background-color: rgba(112, 109, 109, 0.5);
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(117, 115, 115, 0.2);
+}
+
+#emailPopup {
+  width: 60%;
+  padding: 10px;
+  margin: 20px 20%;
+  border: 1px solid #ccc;
+  border-radius: 35px;
+  box-sizing: border-box; /* Đảm bảo padding không làm rộng thêm phần tử */
+}
+
+#sendPassword {
+  padding: 10px;
+  width: 20%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 35px;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin: 0 40%;
+}
+/* Đóng popup */
+.popup .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+

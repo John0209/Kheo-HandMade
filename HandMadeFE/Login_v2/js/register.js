@@ -88,8 +88,18 @@
 
     async function Register() {
         try {
+
+            const data = {
+                email: document.getElementById('email').value,
+                password: document.getElementById('pass').value,
+                name: document.getElementById('name').value,
+                birthDate: document.getElementById('birthday').value,
+                phoneNumber: document.getElementById('phone').value,
+            };
+            console.log(JSON.stringify(data));
+
             //Call API  
-            const response = await fetch('https://handmade.somee.com/api/v1/accounts/register', {
+            const response = await fetch('https://www.handmade.somee.com/api/v1/accounts/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -122,7 +132,7 @@
 
     async function VerifyAccount() {
         try {
-            const response = await fetch('https://handmade.somee.com/api/v1/accounts/verify', {
+            const response = await fetch('https://www.handmade.somee.com/api/v1/accounts/verify', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -136,7 +146,7 @@
 
             if (status >= 200 && status < 300) {
                 alert('Xác thực tài khoản thành công');
-                window.location.href = '/Login_v2/login.html';
+                window.location.href = '../Login_v2/login.html';
             } else {
                 alert('Mã xác thực sai, vui lòng nhập lại');
             }

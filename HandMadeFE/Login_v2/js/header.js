@@ -9,6 +9,9 @@ function redirectToPage(e){
     if(e.target.value === 'order'){
         location.href="../pages/order.html";
     }
+    if(e.target.value === 'changePass'){
+        location.href="../pages/changePass.html";
+    }
     if(e.target.value === 'logout'){
         location.href="../login.html";
     }
