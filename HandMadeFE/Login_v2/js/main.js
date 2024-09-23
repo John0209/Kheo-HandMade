@@ -149,7 +149,6 @@ window.onclick = function(event) {
 
 document.getElementById('sendPassword').onclick = function() {
     const email = document.getElementById('emailPopup').value;
-    alert(email)
     fetch('https://www.handmade.somee.com/api/v1/accounts/recover?email='+ email, {
         method: 'POST'
     })
