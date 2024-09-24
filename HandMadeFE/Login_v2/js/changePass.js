@@ -21,7 +21,6 @@ document.getElementById('btnLogin').addEventListener('click', function (event) {
     // Chuyển đổi dữ liệu account từ JSON
     var user = JSON.parse(account);
 
-    alert(user.customerId)
     // Tạo đối tượng dữ liệu để gửi
     var data = {
         userId: user.customerId,
@@ -39,6 +38,7 @@ document.getElementById('btnLogin').addEventListener('click', function (event) {
     .then(response => response.json())
     .then(result => {
             alert(result.message);
+            window.location.href = '../Login_v2/pages/homepage.html';
     })
     .catch(error => {
         console.error('Error:', error);
