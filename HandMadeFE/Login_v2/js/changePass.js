@@ -21,9 +21,10 @@ document.getElementById('btnLogin').addEventListener('click', function (event) {
     // Chuyển đổi dữ liệu account từ JSON
     var user = JSON.parse(account);
 
+    alert(user.customerId)
     // Tạo đối tượng dữ liệu để gửi
     var data = {
-        userId: user.userId,
+        userId: user.customerId,
         password: newPassword
     };
 
@@ -37,11 +38,7 @@ document.getElementById('btnLogin').addEventListener('click', function (event) {
     })
     .then(response => response.json())
     .then(result => {
-        if (result.success) {
-            alert('Đổi mật khẩu thành công!');
-        } else {
-            alert('Đổi mật khẩu thất bại: ' + result.message);
-        }
+            alert(result.message);
     })
     .catch(error => {
         console.error('Error:', error);
