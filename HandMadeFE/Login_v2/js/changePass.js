@@ -38,7 +38,7 @@ document.getElementById('btnLogin').addEventListener('click', function (event) {
     .then(response => response.json())
     .then(result => {
             alert(result.message);
-            window.location.href = '../Login_v2/pages/homepage.html';
+            window.location.href = 'homepage.html';
     })
     .catch(error => {
         console.error('Error:', error);
