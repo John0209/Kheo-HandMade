@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     productsData.forEach(x=>{
         html += `
     <div class="product-items">
-        <iframe src="${x.picture}" class="product-image"></iframe>
+        <img src="${x.picture}" class="product-image"></img>
         <p>${x.categoryName}</p>
         <a href="../pages/product.html?id=${x.productId}">${x.productName}</a>
         <div class="product-star">

@@ -88,16 +88,8 @@
 
     async function checkLogin() {
         try {
-            // Lấy giá trị của role đã chọn
-            const role = document.getElementById('role').value;
-    
-            // Chọn URL API tùy thuộc vào role
-            const url = role === 'seller'
-                ? 'https://www.handmade.somee.com/api/v1/accounts/login/seller'
-                : 'https://handmade.somee.com/api/v1/accounts/login?type=LoginByEmail';
-    
-            // Gọi API với URL tương ứng
-            const response = await fetch(url, {
+            //Call API
+            const response = await fetch('https://handmade.somee.com/api/v1/accounts/login?type=LoginByEmail', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -108,25 +100,28 @@
                     password: document.getElementById('pass').value
                 })
             });
-    
-            // Xử lý phản hồi từ API
+            //Nhận result from api
             const status = response.status;
             if (status >= 200 && status < 300) {
                 const data = await response.json();
                 sessionStorage.setItem('account', JSON.stringify(data));
                 if (data.email === 'admin@gmail.com') {
-                    window.location.href = '../Login_v2/page_admin/admin_dashboard.html';
-                } else if ( role === 'user') {
+                    window.location.href = '../Login_v2/page_admin/admin_dashboard.html'
+                }
+
+                else if ( data.email === 'seller@gmail.com') {
+                    window.location.href = '../Login_v2/page_seller/homepage_seller.html'
+                }
+                
+                else {
                     window.location.href = '../Login_v2/pages/homepage.html';
                 }
-                else {
-                    window.location.href = '../Login_v2/page_seller/homepage_seller.html';
-                }
+
             } else {
                 alert('Nhập sai email, mật khẩu hoặc tài khoản chưa được xác thực');
             }
         } catch (error) {
-            console.log(error);
+            console.log(error)
         }
     }
     
