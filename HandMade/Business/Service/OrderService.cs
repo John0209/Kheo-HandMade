@@ -123,11 +123,6 @@ public class OrderService : IOrderService
         var orders = await _unit.OrderRepository.GetOrdersByStatus(status, customerId);
         var orderDetails = orders.SelectMany(x => x.OrderDetails);
 
-        foreach (var z in orderDetails)
-        {
-            z.Product!.Picture = _product.GetProductPicture(z.Product.Id);
-        }
-
         return OrderMapper.OrdersToOrdersResponse(orders);
     }
 
@@ -135,10 +130,6 @@ public class OrderService : IOrderService
     {
         var order = await _unit.OrderRepository.GetByIdAsync(id) ??
                     throw new NotFoundException("OrderId " + id + " not found!");
-        foreach (var z in order.OrderDetails)
-        {
-            z.Product!.Picture = _product.GetProductPicture(z.Product.Id);
-        }
 
         return OrderMapper.OrdersToOrderDetailResponse(order);
     }

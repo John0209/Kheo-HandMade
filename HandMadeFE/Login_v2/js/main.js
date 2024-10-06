@@ -89,13 +89,12 @@
     async function checkLogin() {
         try {
             //Call API
-            const response = await fetch('https://handmade.somee.com/api/v1/accounts/login?type=LoginByEmail', {
+            const response = await fetch('https://www.handmade.somee.com/api/v1/accounts/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    phoneNumber: '0397528860',
                     email: document.getElementById('email').value,
                     password: document.getElementById('pass').value
                 })
@@ -105,10 +104,17 @@
             if (status >= 200 && status < 300) {
                 const data = await response.json();
                 sessionStorage.setItem('account', JSON.stringify(data));
-                if (data.email === 'admin@gmail.com') {
-                    window.location.href = '../Login_v2/page_admin/admin_dashboard.html'
-                } else {
-                    window.location.href = '../Login_v2/pages/homepage.html';
+                // Chuyển page theo role
+                switch(data.role){
+                    case "Seller":
+                        window.location.href = '../Login_v2/page_seller/homepage_seller.html'
+                    break;
+                    case "Admin":
+                        window.location.href = '../Login_v2/page_admin/admin_dashboard.html'
+                    break;
+                    case "Customer":
+                        window.location.href = '../Login_v2/pages/homepage.html';
+                    break;
                 }
 
             } else {

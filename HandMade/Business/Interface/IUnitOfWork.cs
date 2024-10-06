@@ -9,6 +9,8 @@ public interface IUnitOfWork:IDisposable
     IProductRepository ProductRepository { get; }
     IOrderRepository OrderRepository { get; }
     IOrderDetailRepository OrderDetailRepository { get; }
+    ISellerRepository SellerRepository { get; }
+    IUserRepository UserRepository { get; }
     public Task<int> SaveChangeAsync();
     
 }

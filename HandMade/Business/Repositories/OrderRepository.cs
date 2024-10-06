@@ -33,12 +33,13 @@ public class OrderRepository : BaseRepository<Order>, IOrderRepository
     public override Task<Order?> GetByIdAsync(int id, bool disableTracking = false)
     {
         return DbSet.Include(x => x.OrderDetails).ThenInclude(x => x.Product)
-            .Include(x=> x.Customer)
+            .Include(x => x.Customer).ThenInclude(x => x!.User)
             .FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public Task<List<Order>> AdminGetOrder(OrderStatus? status)
     {
-        return DbSet.Include(x=>x.Customer).Where(x => x.OrderStatus == status).ToListAsync();
+        return DbSet.Include(x => x.Customer).ThenInclude(x => x!.User)
+            .Where(x => x.OrderStatus == status).ToListAsync();
     }
 }

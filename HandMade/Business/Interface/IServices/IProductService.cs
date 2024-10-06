@@ -10,7 +10,7 @@ public interface IProductService
     Task<List<ProductResponseDto>> GetProductsAsync(ProductStatus status);
     Task CreateProductAsync(ProductCreationRequestDto dto);
     Task<ProductResponseDto> GetProductByIdAsync(int id);
-    Task UpdateProductStatus(int id,ProductStatus status);
+    Task UpdateProductStatus(int id, ProductStatus status);
     Task DeleteProduct(int id);
-    public string GetProductPicture(int productId);
+    Task RemoveAll();
 }

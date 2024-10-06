@@ -24,22 +24,13 @@ public class ProductService : IProductService
     public async Task<List<ProductResponseDto>> GetProductsAsync(ProductStatus status)
     {
         var products = await _unit.ProductRepository.GetProductsAsync(status);
-        foreach (var x in products)
-        {
-            x.Picture = _cloud.GetLinkImage(x.Id)??"";
-        }
         return ProductMapper.ProductsToListProductResponseDto(products);
     }
 
-    public string GetProductPicture(int productId)
-    {
-       return _cloud.GetLinkImage(productId);
-    }
     public async Task<ProductResponseDto> GetProductByIdAsync(int id)
     {
         var product = await _unit.ProductRepository.GetByIdAsync(id) ??
                       throw new NotFoundException("Product not found");
-        product.Picture = GetProductPicture(product.Id);
         return ProductMapper.ProductToProductResponseDto(product);
     }
 
@@ -78,5 +69,13 @@ public class ProductService : IProductService
 
         _unit.ProductRepository.Delete(product);
         await _unit.SaveChangeAsync();
+    }
+
+    public async Task RemoveAll()
+    {
+        var product = await _unit.ProductRepository.GetAsync();
+
+        _unit.ProductRepository.RemoveRange(product);
+        if (await _unit.SaveChangeAsync() < 0) throw new NotImplementException("Remove all product to DB failed");
     }
 }

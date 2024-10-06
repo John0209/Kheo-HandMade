@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClassLibrary1.Repositories;
 
-public class UnitOfWork:IUnitOfWork
+public class UnitOfWork : IUnitOfWork
 {
-    public UnitOfWork(ICustomerRepository customerRepository, ICategoryRepository categoryRepository, IProductRepository productRepository, IOrderRepository orderRepository, IOrderDetailRepository orderDetailRepository, AppDbContext context)
+    public UnitOfWork(ICustomerRepository customerRepository, ICategoryRepository categoryRepository, IProductRepository productRepository, IOrderRepository orderRepository,
+        IOrderDetailRepository orderDetailRepository, AppDbContext context, ISellerRepository sellerRepository, IUserRepository userRepository)
     {
         CustomerRepository = customerRepository;
         CategoryRepository = categoryRepository;
@@ -16,18 +17,24 @@ public class UnitOfWork:IUnitOfWork
         OrderRepository = orderRepository;
         OrderDetailRepository = orderDetailRepository;
         _context = context;
+        SellerRepository = sellerRepository;
+        UserRepository = userRepository;
     }
 
     public void Dispose()
     {
         throw new NotImplementedException();
     }
+
     private readonly AppDbContext _context;
     public ICustomerRepository CustomerRepository { get; }
     public ICategoryRepository CategoryRepository { get; }
     public IProductRepository ProductRepository { get; }
     public IOrderRepository OrderRepository { get; }
     public IOrderDetailRepository OrderDetailRepository { get; }
+    public ISellerRepository SellerRepository { get; }
+    public IUserRepository UserRepository { get; }
+
     public async Task<int> SaveChangeAsync()
     {
         //Handle concurrency update

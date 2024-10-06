@@ -23,6 +23,12 @@ public class OrderController : Controller
         _momoService = momoService;
     }
 
+    /// <summary>
+    /// Tạo mới 1 order
+    /// </summary>
+    /// <param name="dto"></param>
+    /// <param name="type"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<ActionResult<int>> CreateOrderAsync(OrderCreationRequestDto dto, PaymentType type)
     {
@@ -40,6 +46,11 @@ public class OrderController : Controller
          return Ok();
     }
 
+    /// <summary>
+    /// Thanh toán qua momo
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpPost("momo/{id}")]
     public ActionResult CreateMomoPayment(int id)
     {
@@ -51,6 +62,12 @@ public class OrderController : Controller
         });
     }
 
+    /// <summary>
+    /// Cập nhật trạng thái order sau khi thanh toán
+    /// </summary>
+    /// <param name="code"></param>
+    /// <param name="status"></param>
+    /// <returns></returns>
     [HttpPatch]
     public async Task<IActionResult> UpdateOrderAsync(int code, OrderStatus status)
     {
@@ -66,12 +83,24 @@ public class OrderController : Controller
         return Redirect("https://kheo-handmade.vercel.app/Login_v2/pages/success.html");
     }
 
+    /// <summary>
+    /// Lấy order theo status
+    /// </summary>
+    /// <param name="customerId"></param>
+    /// <param name="status"></param>
+    /// <returns></returns>
     [HttpGet]
     public async Task<ActionResult<List<OrderResponse>>> GetOrders(int customerId,OrderStatus? status)
     {
         var result = await _orderService.GetOrders(status,customerId);
         return Ok(result);
     }
+    
+    /// <summary>
+    /// Lấy chi tiết 1 order
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpGet("id")]
     public async Task<ActionResult<OrderDetailsResponse>> GetOrders(int id)
     {
@@ -79,6 +108,11 @@ public class OrderController : Controller
         return Ok(result);
     }
 
+    /// <summary>
+    /// Admin lấy order để làm dashboard
+    /// </summary>
+    /// <param name="status"></param>
+    /// <returns></returns>
     [HttpGet("admin")]
     public async Task<ActionResult<OrderAdminResponse>> AdminGetOrders(OrderStatus status)
     {
