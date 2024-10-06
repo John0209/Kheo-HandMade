@@ -21,8 +21,8 @@
 }
 
 .logo {
-    height: 50px;
-    width: 60px;
+    height: 70px;
+    width: auto;
     margin-left: -25%;
 }
 
@@ -82,7 +82,7 @@
     font-size: 12px;
 }
 
-#bar {}
+
 
 .menu-home {
     display: flex;

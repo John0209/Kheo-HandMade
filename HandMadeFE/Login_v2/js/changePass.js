@@ -23,7 +23,7 @@ document.getElementById('btnLogin').addEventListener('click', function (event) {
 
     // Tạo đối tượng dữ liệu để gửi
     var data = {
-        userId: user.userId,
+        userId: user.customerId,
         password: newPassword
     };
 
@@ -37,11 +37,8 @@ document.getElementById('btnLogin').addEventListener('click', function (event) {
     })
     .then(response => response.json())
     .then(result => {
-        if (result.success) {
-            alert('Đổi mật khẩu thành công!');
-        } else {
-            alert('Đổi mật khẩu thất bại: ' + result.message);
-        }
+            alert(result.message);
+            window.location.href = 'homepage.html';
     })
     .catch(error => {
         console.error('Error:', error);
