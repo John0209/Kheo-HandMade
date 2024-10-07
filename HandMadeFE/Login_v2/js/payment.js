@@ -80,13 +80,13 @@ async function createOrder() {
 
     const account=JSON.parse(sessionStorage.getItem('account'));
     try {
-        const response = await fetch(`https://handmade.somee.com/api/v1/orders?type=${type}`, {
+        const response = await fetch(`https://www.handmade.somee.com/api/v1/orders?type=${type}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                customerId: account.customerId,
+                customerId: account.id,
                 quantity: quantity,
                 total: total,
                 products: products
@@ -94,6 +94,7 @@ async function createOrder() {
         });
 
         const data = await response.json();
+        console.log(data);
         const status = response.status;
         if (status >= 200 && status < 300) {
             switch (type) {

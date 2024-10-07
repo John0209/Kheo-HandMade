@@ -154,10 +154,10 @@ async function getOrdersAPI() {
     var response = '';
     switch (ORDER_STATUS) {
         case 'All':
-            response = await fetch(`https://handmade.somee.com/api/v1/orders?customerId=${account.customerId}`);
+            response = await fetch(`https://handmade.somee.com/api/v1/orders?customerId=${account.id}`);
             break;
         default:
-            response = await fetch(`https://handmade.somee.com/api/v1/orders?customerId=${account.customerId}&status=${ORDER_STATUS}`);
+            response = await fetch(`https://handmade.somee.com/api/v1/orders?customerId=${account.id}&status=${ORDER_STATUS}`);
             break;
     }
     return await response.json();

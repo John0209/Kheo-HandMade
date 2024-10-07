@@ -24,11 +24,14 @@ public class OrderService : IOrderService
 
     public async Task<int> CreateOrderAsync(OrderCreationRequestDto dto, PaymentType type)
     {
+        var customer = await _unit.CustomerRepository.GetCustomerByUserId(dto.CustomerId) ??
+                       throw new NotFoundException("UserId not found");
+
         var order = new Order()
         {
             OrderCode = Int32.Parse(StringUtils.GenerateRandomNumber(8)),
-            OrderDate = DateTime.UtcNow,
-            CustomerId = dto.CustomerId,
+            OrderDate = DateTime.Now,
+            CustomerId = customer!.Id,
             Quantity = dto.Quantity,
             Total = dto.Total,
             PaymentType = type
@@ -118,9 +121,9 @@ public class OrderService : IOrderService
         return 3;
     }
 
-    public async Task<List<OrderResponse>> GetOrders(OrderStatus? status, int customerId)
+    public async Task<List<OrderResponse>> GetOrders(OrderStatus? status, int userId)
     {
-        var orders = await _unit.OrderRepository.GetOrdersByStatus(status, customerId);
+        var orders = await _unit.OrderRepository.GetOrdersByStatus(status, userId);
         var orderDetails = orders.SelectMany(x => x.OrderDetails);
 
         return OrderMapper.OrdersToOrdersResponse(orders);

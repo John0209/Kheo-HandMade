@@ -13,4 +13,8 @@ public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     {
     }
 
+    public Task<Customer?> GetCustomerByUserId(int id)
+    {
+        return DbSet.Include(x => x.User).FirstOrDefaultAsync(x => x.UserId == id);
+    }
 }

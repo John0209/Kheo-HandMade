@@ -6,4 +6,5 @@ namespace ClassLibrary1.Interface.IRepositories;
 
 public interface ICustomerRepository : IBaseRepository<Customer>
 {
+    public Task<Customer?> GetCustomerByUserId(int id);
 }

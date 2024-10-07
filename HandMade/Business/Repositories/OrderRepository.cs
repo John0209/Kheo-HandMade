@@ -17,11 +17,12 @@ public class OrderRepository : BaseRepository<Order>, IOrderRepository
         return DbSet.FirstOrDefault(x => x.Id == id && x.OrderStatus == OrderStatus.Processing);
     }
 
-    public async Task<List<Order>> GetOrdersByStatus(OrderStatus? status, int customerId)
+    public async Task<List<Order>> GetOrdersByStatus(OrderStatus? status, int userId)
     {
         var query = DbSet.AsNoTracking();
         query = query.Include(x => x.OrderDetails).ThenInclude(x => x.Product)
-            .Where(x => x.CustomerId == customerId);
+            .Include(x=>x.Customer).ThenInclude(x=> x!.User)
+            .Where(x => x.Customer!.User.Id == userId);
         if (status != null)
         {
             query = query.Where(x => x.OrderStatus == status);
