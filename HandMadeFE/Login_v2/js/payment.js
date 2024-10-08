@@ -36,6 +36,10 @@ function LoadProducts() {
     });
     productsHTML.innerHTML = html;
     updateDOM(quantity, price);
+
+    const account = JSON.parse(sessionStorage.getItem('account'));
+    const customerNameElement = document.querySelector('.customerName');
+    customerNameElement.textContent = account.name;
 }
 function formatCurrency(price) {
     return new Intl.NumberFormat('vi-VN', {
