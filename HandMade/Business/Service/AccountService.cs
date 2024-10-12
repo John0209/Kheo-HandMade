@@ -2,7 +2,7 @@ using Application.ErrorHandlers;
 using Application.Utils;
 using ClassLibrary1.Dtos.RequestDto.Account;
 using ClassLibrary1.Dtos.ResponseDto;
-using ClassLibrary1.Dtos.ResponseDto.Customer;
+using ClassLibrary1.Dtos.ResponseDto.Authenticate;
 using ClassLibrary1.Dtos.ResponseDto.Seller;
 using ClassLibrary1.Interface;
 using ClassLibrary1.Interface.IServices;

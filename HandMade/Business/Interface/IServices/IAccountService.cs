@@ -1,6 +1,6 @@
 using ClassLibrary1.Dtos.RequestDto.Account;
 using ClassLibrary1.Dtos.ResponseDto;
-using ClassLibrary1.Dtos.ResponseDto.Customer;
+using ClassLibrary1.Dtos.ResponseDto.Authenticate;
 using ClassLibrary1.Dtos.ResponseDto.Seller;
 using DataAccess.Entites;
 using DataAccess.Enum;

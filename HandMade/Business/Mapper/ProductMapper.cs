@@ -17,7 +17,8 @@ public static class ProductMapper
             CategoryId = x.Category!.Id,
             CategoryName = x.Category.Name,
             Description = x.Description,
-            Picture = x.Picture
+            Picture = x.Picture,
+            SellerName = x.Seller!.User!.FullName
         }).ToList();
     }
 
@@ -31,6 +32,7 @@ public static class ProductMapper
         CategoryId = x.Category!.Id,
         CategoryName = x.Category.Name,
         Description = x.Description,
-        Picture = x.Picture
+        Picture = x.Picture,
+        SellerName = x.Seller!.User!.FullName
     };
 }

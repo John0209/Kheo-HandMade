@@ -107,4 +107,26 @@ public class FireBaseService : IFirebaseService
 
         if (await _unit.SaveChangeAsync() < 0) throw new NotImplementException("Update file to DB failed");
     }
+    
+    public async Task<string?> GetImage(string? fileName)
+    {
+        try
+        {
+            var firebaseAuthLink = await GetAuthentication();
+
+            var task = new FirebaseStorage(_configuration.Bucket, new FirebaseStorageOptions
+                {
+                    AuthTokenAsyncFactory = () => Task.FromResult(firebaseAuthLink.FirebaseToken),
+                    ThrowOnCancel = true
+                })
+                .Child(fileName)
+                .GetDownloadUrlAsync();
+
+            return await task;
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+    }
 }

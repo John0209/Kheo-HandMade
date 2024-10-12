@@ -29,5 +29,9 @@ public class UserRepository : BaseRepository<User>, IUserRepository
     {
         return DbSet.Include(x => x.Customer).FirstOrDefault(x => x.Customer != null && x.Email == email && x.Customer.TokenCode == code);
     }
-    
+
+    public override Task<User?> GetByIdAsync(int id, bool disableTracking = false)
+    {
+        return DbSet.Include(x => x.Seller).Include(x => x.Customer).FirstOrDefaultAsync(x => x.Id == id);
+    }
 }

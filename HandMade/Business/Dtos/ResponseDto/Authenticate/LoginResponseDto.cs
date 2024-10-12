@@ -1,6 +1,6 @@
 using DataAccess.Enum;
 
-namespace ClassLibrary1.Dtos.ResponseDto.Customer;
+namespace ClassLibrary1.Dtos.ResponseDto.Authenticate;
 
 public class LoginResponseDto
 {

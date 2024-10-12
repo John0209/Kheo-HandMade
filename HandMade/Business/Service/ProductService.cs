@@ -13,12 +13,10 @@ namespace ClassLibrary1.Service;
 public class ProductService : IProductService
 {
     IUnitOfWork _unit;
-    private ICloudService _cloud;
 
-    public ProductService(IUnitOfWork unit, ICloudService cloud)
+    public ProductService(IUnitOfWork unit)
     {
         _unit = unit;
-        _cloud = cloud;
     }
 
     public async Task<List<ProductResponseDto>> GetProductsAsync(ProductStatus status)
@@ -43,7 +41,8 @@ public class ProductService : IProductService
             Price = dto.Price,
             ProductName = dto.ProductName,
             Description = dto.Description,
-            Status = ProductStatus.Stocking
+            Status = ProductStatus.Stocking,
+            SellerId = dto.SellerId
         };
         await _unit.ProductRepository.AddAsync(product);
         var result = await _unit.SaveChangeAsync();

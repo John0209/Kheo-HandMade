@@ -43,7 +43,8 @@ public class OrderController : Controller
             case PaymentType.Momo:
                 return CreateMomoPayment(orderId);
         }
-         return Ok();
+
+        return Ok();
     }
 
     /// <summary>
@@ -74,6 +75,7 @@ public class OrderController : Controller
         await _orderService.UpdateOrderStatus(code, status);
         return Ok("Update order successful");
     }
+
     [HttpGet]
     [Route("momo-return")]
     public async Task<IActionResult> MomoReturnAsync([FromQuery] MomoResultRequest dto)
@@ -90,12 +92,12 @@ public class OrderController : Controller
     /// <param name="status"></param>
     /// <returns></returns>
     [HttpGet]
-    public async Task<ActionResult<List<OrderResponse>>> GetOrders(int customerId,OrderStatus? status)
+    public async Task<ActionResult<List<OrderResponse>>> GetOrders(int customerId, OrderStatus? status)
     {
-        var result = await _orderService.GetOrders(status,customerId);
+        var result = await _orderService.GetOrders(status, customerId);
         return Ok(result);
     }
-    
+
     /// <summary>
     /// Lấy chi tiết 1 order
     /// </summary>

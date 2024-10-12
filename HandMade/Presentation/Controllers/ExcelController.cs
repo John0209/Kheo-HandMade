@@ -34,7 +34,7 @@ public class ExcelController : ControllerBase
 
         return Ok(new
         {
-            Message = "Import information to recipe db successful"
+            Message = "Import information to product db successful"
         });
     }
 }

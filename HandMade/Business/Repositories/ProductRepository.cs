@@ -15,6 +15,7 @@ public class ProductRepository : BaseRepository<Product>, IProductRepository
     public Task<List<Product>> GetProductsAsync(ProductStatus status)
     {
         IQueryable<Product> query = DbSet.AsNoTracking();
+        query = query.Include(x => x.Seller).ThenInclude(x => x!.User);
         switch (status)
         {
             case ProductStatus.Hide:
@@ -31,6 +32,7 @@ public class ProductRepository : BaseRepository<Product>, IProductRepository
     public override Task<Product?> GetByIdAsync(int id, bool disableTracking = false)
     {
         IQueryable<Product> query = DbSet.AsNoTracking();
-        return query.Include(x => x.Category).FirstOrDefaultAsync(x => x.Id == id);
+        return query.Include(x => x.Category).Include(x => x.Seller).ThenInclude(x => x!.User)
+            .FirstOrDefaultAsync(x => x.Id == id);
     }
 }

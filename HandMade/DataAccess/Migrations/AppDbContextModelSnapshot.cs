@@ -130,6 +130,19 @@ namespace DataAccess.Migrations
                         .IsUnique();
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "6-16 Ấp 4, XTT, TP.HCM",
+                            BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PhoneNumber = "0397528860",
+                            Picture = "",
+                            Status = 1,
+                            TokenCode = 0,
+                            UserId = 5
+                        });
                 });
 
             modelBuilder.Entity("DataAccess.Entites.Order", b =>
@@ -289,6 +302,9 @@ namespace DataAccess.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("Wallet")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("UserId")
@@ -301,7 +317,22 @@ namespace DataAccess.Migrations
                         {
                             Id = 1,
                             Avarta = "",
-                            UserId = 2
+                            UserId = 2,
+                            Wallet = 0m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Avarta = "",
+                            UserId = 3,
+                            Wallet = 0m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Avarta = "",
+                            UserId = 4,
+                            Wallet = 0m
                         });
                 });
 
@@ -346,10 +377,34 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            Email = "seller@gmail.com",
-                            FullName = "Nguyễn Minh Hoàng",
+                            Email = "seller1@gmail.com",
+                            FullName = "Trương Tử Hoàng",
                             PassWord = "12345",
                             RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "seller2@gmail.com",
+                            FullName = "Tôn Cung Linh",
+                            PassWord = "12345",
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Email = "seller3@gmail.com",
+                            FullName = "Đả Thần Tiên",
+                            PassWord = "12345",
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Email = "long88ka@gmail.com",
+                            FullName = "Ngô Đồng Thụ",
+                            PassWord = "12345",
+                            RoleId = 3
                         });
                 });
 

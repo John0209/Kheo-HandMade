@@ -112,6 +112,7 @@ namespace DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Avarta = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Wallet = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -238,7 +239,10 @@ namespace DataAccess.Migrations
                 values: new object[,]
                 {
                     { 1, "admin@gmail.com", "John Administrator", "12345", 1 },
-                    { 2, "seller@gmail.com", "Nguyễn Minh Hoàng", "12345", 2 }
+                    { 2, "seller1@gmail.com", "Trương Tử Hoàng", "12345", 2 },
+                    { 3, "seller2@gmail.com", "Tôn Cung Linh", "12345", 2 },
+                    { 4, "seller3@gmail.com", "Đả Thần Tiên", "12345", 2 },
+                    { 5, "long88ka@gmail.com", "Ngô Đồng Thụ", "12345", 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -247,9 +251,19 @@ namespace DataAccess.Migrations
                 values: new object[] { 1, 1 });
 
             migrationBuilder.InsertData(
+                table: "Customers",
+                columns: new[] { "Id", "Address", "BirthDate", "PhoneNumber", "Picture", "Status", "TokenCode", "UserId" },
+                values: new object[] { 1, "6-16 Ấp 4, XTT, TP.HCM", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "0397528860", "", 1, 0, 5 });
+
+            migrationBuilder.InsertData(
                 table: "Sellers",
-                columns: new[] { "Id", "Avarta", "UserId" },
-                values: new object[] { 1, "", 2 });
+                columns: new[] { "Id", "Avarta", "UserId", "Wallet" },
+                values: new object[,]
+                {
+                    { 1, "", 2, 0m },
+                    { 2, "", 3, 0m },
+                    { 3, "", 4, 0m }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Admins_UserId",
