@@ -13,15 +13,13 @@ namespace HandMade.Controllers;
 public class ProductController : ControllerBase
 {
     private IProductService _productService;
-    private ICloudService _cloud;
 
-    public ProductController(IProductService productService, ICloudService cloud)
+    public ProductController(IProductService productService)
     {
         _productService = productService;
-        _cloud = cloud;
     }
     /// <summary>
-    /// 
+    /// Lấy tất cả product
     /// </summary>
     /// <param name="status"></param>
     /// <returns></returns>
@@ -32,6 +30,11 @@ public class ProductController : ControllerBase
         return Ok(result);
     }
     
+    /// <summary>
+    /// Lấy chi tiết 1 product
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpGet("{id}")]
     public async Task<ActionResult<ProductResponseDto>> GetProductByIdAsync(int id)
     {
@@ -39,6 +42,11 @@ public class ProductController : ControllerBase
         return Ok(result);
     }
 
+    /// <summary>
+    /// Seller tạo mới 1 product
+    /// </summary>
+    /// <param name="dto"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> CreateProductAsync(ProductCreationRequestDto dto)
     {
@@ -49,7 +57,7 @@ public class ProductController : ControllerBase
         });
     }
     /// <summary>
-    /// 
+    /// cập nhật thông tin product
     /// </summary>
     /// <param name="id"></param>
     /// <param name="status"></param>
@@ -63,6 +71,12 @@ public class ProductController : ControllerBase
             Message = "Hide product successful"
         });
     }
+    
+    /// <summary>
+    /// Xóa product theo id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProductAsync(int id)
     {
@@ -73,13 +87,17 @@ public class ProductController : ControllerBase
         });
     }
 
-    [HttpPost("image")]
-    public async Task<ActionResult<string>> UploadImageAsync(int id,IFormFile file)
+    /// <summary>
+    /// Xóa tất cả product trong db
+    /// </summary>
+    /// <returns></returns>
+    [HttpDelete("all")]
+    public async Task<IActionResult> RemoveAll()
     {
-        
-        if (file == null) throw new BadRequestException("File is emptys");
-        var result =await _cloud.UploadImage(file,id);
-        return Ok(result);
+        await _productService.RemoveAll();
+        return Ok(new
+        {
+            Message = "Remove all product successful"
+        });
     }
-    
 }

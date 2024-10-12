@@ -4,7 +4,10 @@ using ClassLibrary1.Interface;
 using ClassLibrary1.Interface.IRepositories;
 using ClassLibrary1.Repositories;
 using ClassLibrary1.Third_Parties;
+using ClassLibrary1.Third_Parties.Configuration;
+using ClassLibrary1.Third_Parties.Service;
 using DataAccess.Data;
+using Kitchen.Application.Gateway.IConfiguration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
@@ -37,6 +40,7 @@ public static class DependencyInjection
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ICloudConfig, CloudConfig>();
         services.AddScoped<IMomoConfig, MomoConfig>();
+        services.AddScoped<IFireBaseConfig, FireBaseConfig>();
         
         services.AddControllers()
             //allow enum string value in swagger and front-end instead of int value

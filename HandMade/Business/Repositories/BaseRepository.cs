@@ -30,6 +30,11 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         DbSet.Remove(entity);
     }
+    
+    public void RemoveRange(IEnumerable<T> entity)
+    {
+        DbSet.RemoveRange(entity);
+    }
 
     public virtual async Task AddAsync(T entity)
     {
