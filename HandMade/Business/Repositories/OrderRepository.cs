@@ -21,7 +21,7 @@ public class OrderRepository : BaseRepository<Order>, IOrderRepository
     {
         var query = DbSet.AsNoTracking();
         query = query.Include(x => x.OrderDetails).ThenInclude(x => x.Product)
-            .Include(x=>x.Customer).ThenInclude(x=> x!.User)
+            .Include(x => x.Customer).ThenInclude(x => x!.User)
             .Where(x => x.Customer!.User.Id == userId);
         if (status != null)
         {
@@ -33,7 +33,7 @@ public class OrderRepository : BaseRepository<Order>, IOrderRepository
 
     public override Task<Order?> GetByIdAsync(int id, bool disableTracking = false)
     {
-        return DbSet.Include(x => x.OrderDetails).ThenInclude(x => x.Product)
+        return DbSet.Include(x => x.OrderDetails).ThenInclude(x => x.Product).ThenInclude(x => x!.Seller)
             .Include(x => x.Customer).ThenInclude(x => x!.User)
             .FirstOrDefaultAsync(x => x.Id == id);
     }

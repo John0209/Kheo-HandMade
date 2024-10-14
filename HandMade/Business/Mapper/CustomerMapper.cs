@@ -1,5 +1,4 @@
 using ClassLibrary1.Dtos.ResponseDto;
-using ClassLibrary1.Dtos.ResponseDto.Customer;
 using ClassLibrary1.Dtos.ResponseDto.Seller;
 using DataAccess.Entites;
 

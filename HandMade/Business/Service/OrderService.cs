@@ -77,11 +77,32 @@ public class OrderService : IOrderService
         return order;
     }
 
+    /// <summary>
+    /// Update và cập nhật số tiền cho seller nêu success
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="status"></param>
+    /// <exception cref="NotFoundException"></exception>
+    /// <exception cref="NotImplementException"></exception>
     public async Task UpdateOrderStatus(int id, OrderStatus status)
     {
         var order = await _unit.OrderRepository.GetByIdAsync(id) ??
                     throw new NotFoundException("OrderId " + id + " not found");
-        order.OrderStatus = status;
+
+        if (status == OrderStatus.Success)
+        {
+            foreach (var detail in order.OrderDetails)
+            {
+                detail.Product!.Seller!.Wallet += (detail.Quantity * detail.Price);
+            }
+
+            order.OrderStatus = status;
+        }
+        else
+        {
+            order.OrderStatus = status;
+        }
+
         _unit.OrderRepository.Update(order);
         var result = await _unit.SaveChangeAsync();
         if (result <= 0)

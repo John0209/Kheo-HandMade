@@ -6,5 +6,6 @@ public enum ExcelTitle
     Description,
     Quantity,
     Price,
-    CategoryId
+    CategoryId,
+    SellerId
 }
