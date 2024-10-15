@@ -55,7 +55,7 @@ function updateDOM(quantity, price) {
 }
 const PaymentType = {
     MOMO: 'momo-pay',
-    CASH: 'cash-pay'
+    CAKE: 'cake-pay'
 }
 let type = '';
 
@@ -72,7 +72,7 @@ radios.forEach(radio => {
         if (radio.id === PaymentType.MOMO) {
             type = 'Momo';
         } else {
-            type = 'Cash';
+            type = 'Cake';
         }
     });
 });
@@ -105,10 +105,25 @@ async function createOrder() {
                 case 'Momo':
                     location.href = data.link;
                     break;
-                case 'Cash':
-                    location.href = "../pages/success.html";
+                case 'Cake':
+                    // Lấy popup và các phần tử bên trong nó
+                    const popup = document.getElementById("popup");
+                    const popupImg = document.getElementById("popup-img");
+                    const popupText = document.getElementById("popup-text");
+                    const closeBtn = document.getElementsByClassName("close")[0];
+
+                    // Đặt ảnh và văn bản từ data vào popup
+                    popupText.textContent = data.content;
+
+                    // Hiển thị popup
+                    popup.style.display = "block";
+
+                    // Sau 1 phút (60 giây) tự động chuyển hướng đến trang success.html
+                    setTimeout(function() {
+                            location.href = "../pages/success.html";
+                        }, 60000);  // 60000 milliseconds = 60 seconds
                     break;
-            }
+                    }
         } else {
             alert('Thanh toán thật bại, vui lòng làm lại');
         }
