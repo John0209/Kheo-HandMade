@@ -25,9 +25,9 @@ const PAYMENT_TYPE = {
         image: '../images/momo.png',
         title: 'Thanh toán bằng ví Momo'
     },
-    Cash: {
-        image: '../images/cash.png',
-        title: 'Thanh toán khi nhận hàng'
+    Cake: {
+        image: '../images/cake.png',
+        title: 'Thanh toán qua Cake'
     }
 }
 var status_color = '';

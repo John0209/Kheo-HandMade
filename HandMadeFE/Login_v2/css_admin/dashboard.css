@@ -1,14 +1,23 @@
 .total_order{
     width: 1050px;
-    height: 140px;
+    height: 250px;
     background-color: white;
     margin: 3% 0 0 8%;
     border-radius: 15px;
+    padding:0 10px;
 }
+
+.total_order #totalIncome {
+    height: 40px;
+    padding-left: 20px;
+    font-size: 25px;
+    color: green;
+}
+
 .title_option{
     display: flex;
     justify-content: space-evenly;
-    padding-top: 20px;
+    padding: 20px 0;
     font-family: Arial, Helvetica, sans-serif;
 }
 .title_option h5{
@@ -71,11 +80,18 @@
     padding: 1% 0 0 3%;
 }
 .total_product{
-    width: 85%;
-    height: 300px;
+    width: 1200px;
+    height: 100%;
     background-color: white;
     margin: 5% 0 0 14%;
     border-radius: 15px;
+    padding: 20px;
+}
+
+.total_product h5 {
+    height: 40px;
+    padding-left: 20px;
+    font-size: 25px;
 }
 .total_money{
     width: 80%;
@@ -86,6 +102,7 @@
 }
 .title_product{
     display: flex;
+    flex-direction: column-reverse;
     padding-top: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -194,3 +211,33 @@
     color: black;
     margin-left: 20px;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: #ddd;
+  }
+
+  h5 {
+    margin-top: 30px;
+  }
+
+  

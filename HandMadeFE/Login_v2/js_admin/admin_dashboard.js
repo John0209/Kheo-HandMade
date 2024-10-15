@@ -1,15 +1,3 @@
-// const btnMenu=document.querySelectorAll('button[name="btnMenu"]')
-// btnMenu.forEach(btn =>{
-//     btn.addEventListener('click',async e =>{
-//         changeBtnStyle(btn);
-//     })
-// })
-// function changeBtnStyle(btn){
-//     btnMenu.forEach(x=>{
-//         x.className='btnMenu';
-//     })
-//      btn.className='sidebar-select';
-// }
 document.addEventListener('DOMContentLoaded', function () {
     const btnMenu = document.querySelectorAll('button[name="btnMenu"]');
     btnMenu.forEach(x => {
@@ -71,3 +59,98 @@ function changeBorderStatus(btn) {
     }
     line.className = 'border_Order';
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Call API để lấy thông tin đơn hàng
+    fetch('https://www.handmade.somee.com/api/v1/dashboard', {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Đặt tổng số đơn hàng
+      document.querySelector('#total_number h4').textContent = data.orderTotal || 0;
+      document.querySelector('#totalIncome').textContent = 'Tổng thu nhập: ' + data.moneyTotal || 0;
+
+      // Biến để lưu số lượng từng trạng thái
+      let successCount = 0, failCount = 0, deliveringCount = 0, confirmingCount = 0, processingCount = 0;
+
+      // Xử lý từng đơn hàng và gán giá trị tương ứng cho các trạng thái
+      data.orders.forEach(order => {
+        switch (order.status) {
+          case 'Success':
+            successCount = order.orderStatusTotal;
+            break;
+          case 'Failed':
+            failCount = order.orderStatusTotal;
+            break;
+          case 'Delivering':
+            deliveringCount = order.orderStatusTotal;
+            break;
+          case 'Confirming':
+            confirmingCount = order.orderStatusTotal;
+            break;
+          case 'Processing':
+            processingCount = order.orderStatusTotal;
+            break;
+        }
+      });
+
+      // Gán giá trị vào các thẻ h4
+      document.querySelector('#success_number h4').textContent = successCount;
+      document.querySelector('#fail_number h4').textContent = failCount;
+      document.querySelector('#delivery_number h4').textContent = deliveringCount;
+      document.querySelector('#confirm_number h4').textContent = confirmingCount;
+      document.querySelector('#process_number h4').textContent = processingCount;
+    })
+    .catch(error => {
+      console.error('Error fetching order data:', error);
+    });
+
+    // Call API để lấy thông tin sản phẩm
+    fetch('https://handmade.somee.com/api/v1/products?status=Stocking', {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(products => {
+      const table = document.createElement('table');
+      const thead = `
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price (VND)</th>
+            <th>Seller Name</th>
+          </tr>
+        </thead>
+      `;
+      table.innerHTML = thead;
+
+      const tbody = document.createElement('tbody');
+
+      // Vẽ các dòng dữ liệu vào bảng
+      products.forEach(product => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${product.productName}</td>
+          <td>${product.quantity}</td>
+          <td>${product.price}</td>
+          <td>${product.sellerName}</td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      table.appendChild(tbody);
+
+      // Thêm bảng vào phần dưới của thẻ h5
+      document.querySelector('.title_product').appendChild(table);
+    })
+    .catch(error => {
+      console.error('Error fetching product data:', error);
+    });
+  });

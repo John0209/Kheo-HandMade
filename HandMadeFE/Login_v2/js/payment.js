@@ -121,7 +121,7 @@ async function createOrder() {
                     // Sau 1 phút (60 giây) tự động chuyển hướng đến trang success.html
                     setTimeout(function() {
                             location.href = "../pages/success.html";
-                        }, 60000);  // 60000 milliseconds = 60 seconds
+                        }, 100000);  // 60000 milliseconds = 60 seconds
                     break;
                     }
         } else {
