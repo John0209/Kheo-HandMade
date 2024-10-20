@@ -7,7 +7,7 @@
     <title>Handy campus</title>
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css_seller/homepage_seller.css">
+    <link rel="stylesheet" href="../css_seller/update.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <!--===============================================================================================-->
@@ -105,17 +105,42 @@
                 </div>
             </div>
         </div>
-
     </header>
 
-    <!-- product now-->
-    <div class="container-fluid">
-        <div class="container">
-            <h2 id="product-title">Sản phẩm của tôi</h2>
-            <div id="product-list" class="product"> </div>
-            <button id="addProduct" style="display: flex; align-items: center; margin: auto;">
-                <span style="font-size: 20px; margin-right: 5px;">&#43;</span> Thêm sản phẩm
-            </button>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-7" style="padding-left: 6.4%" id="image-product"> </div>
+
+            <div class="col-sm-5">
+                <div id="information">
+                    <div>
+                        <label for="productNameUp">Tên sản phẩm:</label>
+                        <input type="text" id="productNameUp">
+                    </div>
+                    <div>
+                        <label for="descriptionUp">Mô tả:</label>
+                        <input type="text" id="descriptionUp">
+                    </div>
+                    <div>
+                        <label for="quantityUp">Số lượng:</label>
+                        <input type="text" id="quantityUp">
+                    </div>
+                    <div>
+                        <label for="priceUp">Giá:</label>
+                        <input type="text" id="priceUp">
+                    </div>
+                    <button id="updateInfor">Cập nhật thông tin</button>
+                    <!-- Thẻ để chọn file -->
+                    <div>
+                        <label for="productImageUp">Chọn hình ảnh:</label>
+                        <input type="file" id="productImageUp">
+                    </div>
+                    <button id="updateImage">Cập nhật hình ảnh</button>
+                    <button id="btnDelete">Xóa sản phẩm</button>
+                </div>
+            </div>
+            
+
         </div>
     </div>
 
@@ -199,11 +224,8 @@
             </div>
         </div>
     </footer>
-
-    <script src="../page_seller/seller.js"></script>
+    <script src="../page_seller/update.js"></script>
     <script src="../js/header.js"></script>
 </body>
-
-
 
 </html>

@@ -1,0 +1,98 @@
+.container{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #4d4d4d;
+    margin-top: 20px;
+}
+#image-crop {
+    height: 70%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+#information {
+    width: 80%;
+    height: 380px;
+    border: 1px solid #EAEAEA;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 15px;
+    margin-left: 50px;
+}
+
+#title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+#information {
+    width: 100%;
+    height: 500px;
+    border: 1px solid #EAEAEA;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 15px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+#information select {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+    overflow: auto;
+}
+
+#information button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #F57C20;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+#information button:hover {
+    background-color: #d36b1a;
+}
+
+#information button:last-child {
+    background-color: #e74c3c;
+}
+
+#information button:last-child:hover {
+    background-color: #c0392b;
+}
+
+label {
+    display: inline-block;
+    width: 160px; /* You can adjust this value as needed */
+    height: 40px;
+    text-align: left;
+    margin-right: 10px; /* To add some space between the label and the input */
+    font-size: 20px;
+}
+
+input {
+    width: 200px; /* You can adjust this value as needed */
+    padding: 5px; /* Adds some space inside the input field for better readability */
+    margin-bottom: 10px; /* Adds space between the input fields */
+    font-size: 20px;
+    height: 40px;
+}
+
