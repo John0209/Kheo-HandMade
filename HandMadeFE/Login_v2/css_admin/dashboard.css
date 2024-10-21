@@ -1,13 +1,13 @@
 .total_order{
     width: 1050px;
-    height: 250px;
+    height: auto;
     background-color: white;
     margin: auto;
     border-radius: 15px;
-    padding:0 10px;
+    padding:0 10px 10px 10px;
 }
 
-.total_order #totalIncome {
+.total_order .text {
     height: 40px;
     padding-left: 20px;
     font-size: 25px;

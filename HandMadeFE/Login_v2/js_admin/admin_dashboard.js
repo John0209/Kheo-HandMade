@@ -74,8 +74,12 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log(data)
       document.querySelector('#total_number h4').textContent = data.orderTotal || 0;
       document.querySelector('#totalIncome').innerHTML = 'Tổng thu nhập: ' + (data.moneyTotal || 0) + ' VND<span style="padding-left: 150px;"></span>Hoa hồng: ' + Math.round((data.moneyTotal || 0) / 10) + ' VND';
+      document.querySelector('#monthIncome').innerHTML = 'Thu nhập tháng này: ' + (data.moneyThisMonthTotal || 0) + ' VND'
 
-
+      const totalUsers = data.userByDay.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue.total;
+      }, 0);
+      document.querySelector('#totalUser').innerHTML = 'Tổng số người dùng: ' + totalUsers
 
       // Biến để lưu số lượng từng trạng thái
       let successCount = 0, failCount = 0, deliveringCount = 0, confirmingCount = 0, processingCount = 0;
