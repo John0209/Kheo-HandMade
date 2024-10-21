@@ -7,7 +7,7 @@
     <title>Handy campus</title>
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css_seller/homepage_seller.css">
+    <link rel="stylesheet" href="../css_seller/seller_dashboard.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <!--===============================================================================================-->
@@ -104,17 +104,27 @@
                 </div>
             </div>
         </div>
-
     </header>
-
-    <!-- product now-->
-    <div class="container-fluid">
-        <div class="container">
-            <h2 id="product-title">Sản phẩm của tôi</h2>
-            <div id="product-list" class="product"> </div>
-            <button id="addProduct" style="display: flex; align-items: center; margin: auto;">
-                <span style="font-size: 20px; margin-right: 5px;">&#43;</span> Thêm sản phẩm
-            </button>
+    <div class="infor" id="totalIncome"> </div>
+    <div class="infor" id="totalOrder"> </div>
+    <div id="title">
+        
+        <div>
+            <h5> Dữ liệu từng ngày </h5>
+            <div id="line"></div>
+        </div>
+        <i class="fa-solid fa-chart-line"></i>
+    </div>
+    
+    <div id="information">
+        <div class="chart">
+            <canvas id="orderTotalChart"></canvas>
+        </div>
+        <div class="chart">
+            <canvas id="incomeTotalChart"></canvas>
+        </div>
+        <div class="chart">
+            <canvas id="orderSuccessTotalChart"></canvas>
         </div>
     </div>
 
@@ -198,11 +208,9 @@
             </div>
         </div>
     </footer>
-
-    <script src="../page_seller/seller.js"></script>
+    <script src="../page_seller/seller_dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/header.js"></script>
 </body>
-
-
 
 </html>

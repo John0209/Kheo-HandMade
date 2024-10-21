@@ -2,7 +2,7 @@
     width: 1050px;
     height: 250px;
     background-color: white;
-    margin: 3% 0 0 8%;
+    margin: auto;
     border-radius: 15px;
     padding:0 10px;
 }
@@ -239,5 +239,16 @@ table {
   h5 {
     margin-top: 30px;
   }
+.chart {
+    width: 80%;
+    height: 30%;
+    margin: 3% auto;
+}
 
-  
+canvas {
+    margin:auto;
+    width:80% !important;
+    height: auto !important;
+    border: 2px solid #000; /* You can adjust the color and thickness */
+    border-radius: 10px; 
+  }

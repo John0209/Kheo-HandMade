@@ -71,29 +71,32 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(response => response.json())
     .then(data => {
       // Đặt tổng số đơn hàng
+      console.log(data)
       document.querySelector('#total_number h4').textContent = data.orderTotal || 0;
-      document.querySelector('#totalIncome').textContent = 'Tổng thu nhập: ' + data.moneyTotal || 0;
+      document.querySelector('#totalIncome').innerHTML = 'Tổng thu nhập: ' + (data.moneyTotal || 0) + ' VND<span style="padding-left: 150px;"></span>Hoa hồng: ' + Math.round((data.moneyTotal || 0) / 10) + ' VND';
+
+
 
       // Biến để lưu số lượng từng trạng thái
       let successCount = 0, failCount = 0, deliveringCount = 0, confirmingCount = 0, processingCount = 0;
 
       // Xử lý từng đơn hàng và gán giá trị tương ứng cho các trạng thái
-      data.orders.forEach(order => {
+      data.orderByStatus.forEach(order => {
         switch (order.status) {
           case 'Success':
-            successCount = order.orderStatusTotal;
+            successCount = order.total;
             break;
           case 'Failed':
-            failCount = order.orderStatusTotal;
+            failCount = order.total;
             break;
           case 'Delivering':
-            deliveringCount = order.orderStatusTotal;
+            deliveringCount = order.total;
             break;
           case 'Confirming':
-            confirmingCount = order.orderStatusTotal;
+            confirmingCount = order.total;
             break;
           case 'Processing':
-            processingCount = order.orderStatusTotal;
+            processingCount = order.total;
             break;
         }
       });
@@ -104,10 +107,129 @@ document.addEventListener("DOMContentLoaded", function() {
       document.querySelector('#delivery_number h4').textContent = deliveringCount;
       document.querySelector('#confirm_number h4').textContent = confirmingCount;
       document.querySelector('#process_number h4').textContent = processingCount;
+      return data
     })
-    .catch(error => {
-      console.error('Error fetching order data:', error);
-    });
+
+    .then(data => {
+      // Extract data for the charts
+      const sortedData = data.orderByDay.sort((a, b) => {
+        // Convert date strings into Date objects for comparison
+        const dateA = new Date(a.date.split("/").reverse().join("-"));
+        const dateB = new Date(b.date.split("/").reverse().join("-"));
+        return dateA - dateB; // Sort in ascending order
+      });
+  
+      // Extract sorted data for the charts
+      const dates = sortedData.map(entry => entry.date);
+      const orderTotals = sortedData.map(entry => entry.orderTotal);
+      const incomeTotals = sortedData.map(entry => entry.incomeTotal);
+      const orderSuccessTotals = sortedData.map(entry => entry.orderSuccessTotal);
+  
+      // Create line charts using Chart.js
+  
+      // Chart for Order Total
+      const orderTotalCtx = document.getElementById('orderTotalChart').getContext('2d');
+      new Chart(orderTotalCtx, {
+        type: 'line',
+        data: {
+          labels: dates,
+          datasets: [{
+            label: 'Order Total',
+            data: orderTotals,
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderWidth: 2,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: true },
+            title: { display: true, text: 'Tổng số đơn hàng từng ngày' }
+          },
+          scales: {
+            x: { title: { display: true, text: 'Ngày' }},
+            y: {
+              title: { display: true, text: 'Tổng số đơn' },
+              ticks: {
+                callback: function(value) { // Show only integers on y-axis
+                  if (Number.isInteger(value)) {
+                    return value;
+                  }
+                },
+                stepSize: 1 // Ensure that the steps are whole numbers
+              }
+            }
+          }
+        }
+      });
+  
+      // Chart for Income Total
+      const incomeTotalCtx = document.getElementById('incomeTotalChart').getContext('2d');
+      new Chart(incomeTotalCtx, {
+        type: 'line',
+        data: {
+          labels: dates,
+          datasets: [{
+            label: 'Income Total',
+            data: incomeTotals,
+            borderColor: 'rgba(153, 102, 255, 1)',
+            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            borderWidth: 2,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: true },
+            title: { display: true, text: 'Doanh thu theo ngày' }
+          },
+          scales: {
+            x: { title: { display: true, text: 'Ngày' }},
+            y: { title: { display: true, text: 'Tổng doanh thu (VND)' }}
+          }
+        }
+      });
+  
+      // Chart for Order Success Total
+      const orderSuccessTotalCtx = document.getElementById('orderSuccessTotalChart').getContext('2d');
+      new Chart(orderSuccessTotalCtx, {
+        type: 'line',
+        data: {
+          labels: dates,
+          datasets: [{
+            label: 'Order Success Total',
+            data: orderSuccessTotals,
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderWidth: 2,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: true },
+            title: { display: true, text: 'Đơn đặt hàng thành công theo ngày' }
+          },
+          scales: {
+            x: { title: { display: true, text: 'Ngày' }},
+            y: {
+              title: { display: true, text: 'Đơn hàng thành công' },
+              ticks: {
+                callback: function(value) {
+                  if (Number.isInteger(value)) {
+                    return value;
+                  }
+                },
+                stepSize: 1 // Ensure whole number steps
+              }
+            }
+          }
+        }
+    })
 
     // Call API để lấy thông tin sản phẩm
     fetch('https://handmade.somee.com/api/v1/products?status=Stocking', {
@@ -154,3 +276,4 @@ document.addEventListener("DOMContentLoaded", function() {
       console.error('Error fetching product data:', error);
     });
   });
+});
