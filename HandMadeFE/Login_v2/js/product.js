@@ -4,11 +4,12 @@ document.addEventListener('DOMContentLoaded', async function () {
     console.log(data);
 
     const render = () => {
-        const { productName, price, description, picture, quantity } = data;
+        const { productName, price, sellerName, picture, quantity } = data;
 
         document.getElementById('image-product').innerHTML = ` <img src="${picture}" id="image-crop">`
         document.getElementById('title').innerHTML = `<p>${productName}</p>`;
         document.getElementById('price').innerHTML = formatCurrency(price);
+        document.getElementById('sell').innerHTML = `<p>Người bán:</p><span>${sellerName}</span>`
         // document.getElementById('des-content').innerHTML=`<p>${description}</p>`;
         document.getElementById('quantity').innerHTML = `<p>Số lượng:</p><span>${quantity}</span>`
     }
