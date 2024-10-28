@@ -163,7 +163,8 @@ document.addEventListener("DOMContentLoaded", function() {
                   }
                 },
                 stepSize: 1 // Ensure that the steps are whole numbers
-              }
+              },
+              beginAtZero: true
             }
           }
         }
@@ -192,7 +193,8 @@ document.addEventListener("DOMContentLoaded", function() {
           },
           scales: {
             x: { title: { display: true, text: 'Ngày' }},
-            y: { title: { display: true, text: 'Tổng doanh thu (VND)' }}
+            y: { title: { display: true, text: 'Tổng doanh thu (VND)' },
+            beginAtZero: true}
           }
         }
       });
@@ -229,7 +231,8 @@ document.addEventListener("DOMContentLoaded", function() {
                   }
                 },
                 stepSize: 1 // Ensure whole number steps
-              }
+              },
+              beginAtZero: true
             }
           }
         }
