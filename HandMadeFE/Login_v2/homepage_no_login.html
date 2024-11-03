@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handy campus</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/homepage.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!--===============================================================================================-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row" style="margin: 10px 0 -20px 0;">
+                    <div class="col-sm-6 header-contact">
+                        <p><i class="fa-solid fa-location-dot"></i> Làng Đại học tp.HCM</p>
+                        <p><i class="fa-solid fa-phone"></i> Bạn cần trợ giúp? Gọi ngay: 19001080</p>
+                    </div>
+                    <div class="col-sm-6 header-contact">
+                        <p><i class="fa-solid fa-language"></i> Tiếng Việt / VNĐ</p>
+                        <p><i class="fa-solid fa-circle-info"></i> Trợ Giúp</p>
+                        <p><i class="fa-brands fa-facebook"></i> <i class="fa-brands fa-instagram"> </i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 header-contact">
+                        <img src="images/kheo.png" class="logo">
+                    </div>
+
+                    <div class="search-box col-sm-4 header-contact">
+                        <input class="search" placeholder="Tìm kiếm" type="search">
+                        <i class="fa-solid fa-magnifying-glass searchIcon"></i>
+                    </div>
+
+                    <div class="col-sm-4" id="contact-menu">
+                        <div class="header-contact">
+                            <button id="btnNotify">
+                                <i class="fa-solid fa-bell icon-login"></i>
+                            </button>
+                            <div class="login-text">
+                                <p>Reng reng</p>
+                                <p2 style="font-weight: bold;">Thông báo</p2>
+                            </div>
+
+                            <button id="btnCart">
+                                <i class="fa-solid fa-cart-shopping icon-login"></i>
+                            </button>
+                            <div class="login-text">
+                                <p>Giỏ hàng</p>
+                                <p2 style="font-weight: bold;">Mua ngay</p2>
+                            </div>
+
+                            <button id="btnLogin">
+                                <i class="fa-solid fa-user icon-login"></i>
+                            </button>
+                            <div class="login-text">
+                                <p>Đăng nhập</p>
+                                 <select id="account-dropdown"> 
+                                    <option class="customer-name"></option>
+                                    <option value="login"><p>Đăng nhập</p></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row" style="margin-top: 20px;">
+
+                    <div class="col-sm-4 header-contact">
+                        <div class="menu-bar">
+                            <button class="btn"><i class="fa-solid fa-bars"></i></button>
+                            <p>Danh mục</p>
+                            <div class="menu-options">
+                                <div>Option 1</div>
+                                <div>Option 2</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-home col-sm-4">
+                        <a href="pages/homepage.html">Trang chủ</a>
+                        <p>Sản phẩm</p>
+                        <p>Liên hệ</p>
+                        <p>Bài viết</p>
+                    </div>
+
+                    <div class="menu-promotion col-sm-4">
+                        <p>Ưu đãi đặc biệt|</p>
+                        <p>Ưu đãi trong ngày|</p>
+                        <p>Bán chạy nhất|</p>
+                        <p>Quà mới</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3" id="flower">
+                <img src="images/flower_BGR.png">
+            </div>
+
+            <div class="col-sm-9" id="home-brg">
+                <img src="images/home_BGR.png">
+                <div class="home-brg-content">
+                    <p id="home-brg-promotion">
+                        Khuyến mãi mùa hè</p>
+                    <p id="home-brg-combo">
+                        COMBO ƯU ĐÃI MÙA LỄ HỘI</p>
+                    <p>Nhập tràn ưu đãi, vô vàn quà tặng kèm để
+                        trang trí thêm cho một mốn quà ý nghĩa</p>
+                    <button id="home-brg-btn">Tìm hiểu ngay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-lg">
+        <div id="container">
+            <div class="row" id="menu-security">
+                <div class="col-sm-3">
+                    <div id="menu">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <div>
+                            <span>Bảo trì sản phẩm</span>
+                            <p>Sữa chữa trong vòng 30 ngày</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div id="menu">
+                        <div>
+                            <i class="fa-solid fa-headphones"></i>
+                        </div>
+                        <div>
+                            <span>Hỗ trợ trực tuyến</span>
+                            <p>Nhanh chóng phản hồi</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div id="menu">
+                        <div>
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <div>
+                            <span>Hỗ trợ phí giao hàng</span>
+                            <p>Hỗ trợ khi mua 2 món trở lên</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div id="menu">
+                        <div>
+                            <i class="fa-solid fa-money-check-dollar"></i>
+                        </div>
+                        <div>
+                            <span>Thanh toán dễ dàng</span>
+                            <p>Thanh toán bằng ví điện tử</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="container">
+            <h2 id="product-title">Trao ưu đãi - Nhận yêu thương</h2>
+            <div id="product-list" class="product">
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <hr id="hr">
+        <div class="container">
+            <div class="row" id="footer">
+                <div class="col-sm-3">
+                    <h5>LIÊN HỆ CHÚNG TÔI</h5>
+
+                    <div id="contact">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <p>Thứ Hai - Thứ Sáu</p>
+                            <p>Thời Gian 08h00 - 20h00</p>
+                            <span>+(1) 123 123 1230</span>
+                        </div>
+                    </div>
+
+                    <div id="contact">
+                        <i class="fa-regular fa-envelope"></i>
+                        <div>
+                            <p>Bạn cần giúp đỡ?</p>
+                            <p>support@handycampus.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <h5>VỀ HandyCampus</h5>
+                    <div id="kheo">
+                        <p>Giới thiệu về HandyCampus</p>
+                        <p>Điều khoản</p>
+                        <p>Chính sách bảo mật</p>
+                        <p>Danh sách yêu thích</p>
+                        <p>Chính sách bảo mật</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <h5>HỖ TRỢ KHÁCH HÀNG</h5>
+                    <div id="kheo">
+                        <p>Liên hệ chúng tôi</p>
+                        <p>Trung tâm trợ giúp</p>
+                        <p>Trả lại & Trao đổi</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <h5>THEO DÕI</h5>
+                    <div id="contact">
+                        <i class="fa-brands fa-facebook"></i>
+                        <p> </p>
+                        <i class="fa-brands fa-tiktok"></i>
+                        <p> </p>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <h5>PHƯƠNG THỨC THANH TOÁN</h5>
+                    <div id="contact">
+                        <i class="fa-brands fa-cc-visa"></i>
+                        <p> </p>
+                        <i class="fa-brands fa-cc-mastercard"></i>
+                        <p> </p>
+                        <i class="fa-brands fa-apple-pay"></i>
+                    </div>
+                </div>
+
+                <hr id="hr">
+            </div>
+
+            <div class="row" id="footer">
+                <div class="col-sm-3">
+                    <p>© 2024 handy. All Rights Reserved</p>
+                </div>
+                <div class="col-sm-6">
+                    <p>Quyền riêng tư · Điều khoản · Sơ đồ trang web</p>
+                </div>
+                <div class="col-sm-3">
+                    <p>Tiền tệ: VND - Ngôn ngữ: Tiếng Việt</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/homepage_no_login.js"></script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/6703285d256fb1049b1e324d/1ianu18e6';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+
+
+
+</html>
