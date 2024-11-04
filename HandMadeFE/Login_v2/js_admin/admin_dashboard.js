@@ -71,6 +71,9 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(response => response.json())
     .then(data => {
       // Định dạng giá trị tiền với dấu chấm ngăn cách
+
+      document.querySelector('#total_number h4').textContent = data.orderTotal || 0;
+      
       const moneyTotal = (data.moneyTotal || 0).toLocaleString('vi-VN');
       const commission = Math.round((data.moneyTotal || 0) / 10).toLocaleString('vi-VN');
       const moneyThisMonthTotal = (data.moneyThisMonthTotal || 0).toLocaleString('vi-VN');
