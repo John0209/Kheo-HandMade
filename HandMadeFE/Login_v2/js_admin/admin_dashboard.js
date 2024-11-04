@@ -70,11 +70,14 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     .then(response => response.json())
     .then(data => {
-      // Đặt tổng số đơn hàng
-      console.log(data)
-      document.querySelector('#total_number h4').textContent = data.orderTotal || 0;
-      document.querySelector('#totalIncome').innerHTML = 'Tổng thu nhập: ' + (data.moneyTotal || 0) + ' VND<span style="padding-left: 150px;"></span>Hoa hồng: ' + Math.round((data.moneyTotal || 0) / 10) + ' VND';
-      document.querySelector('#monthIncome').innerHTML = 'Thu nhập tháng này: ' + (data.moneyThisMonthTotal || 0) + ' VND'
+      // Định dạng giá trị tiền với dấu chấm ngăn cách
+      const moneyTotal = (data.moneyTotal || 0).toLocaleString('vi-VN');
+      const commission = Math.round((data.moneyTotal || 0) / 10).toLocaleString('vi-VN');
+      const moneyThisMonthTotal = (data.moneyThisMonthTotal || 0).toLocaleString('vi-VN');
+
+      document.querySelector('#totalIncome').innerHTML = `Tổng thu nhập: ${moneyTotal} VND<span style="padding-left: 150px;"></span>Hoa hồng: ${commission} VND`;
+      document.querySelector('#monthIncome').innerHTML = `Thu nhập tháng này: ${moneyThisMonthTotal} VND`;
+    
 
       const totalUsers = data.userByDay.reduce((accumulator, currentValue) => {
         return accumulator + currentValue.total;
